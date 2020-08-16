@@ -107,7 +107,15 @@ export const manageGame = (item) => {
   };
 };
 
-export const getGameNumbers = (sort, gameid, stateid, userid, url, page) => {
+export const getGameNumbers = (
+  sort,
+  gameid,
+  stateid,
+  userid,
+  url,
+  page,
+  currentMyNumbersPage,
+) => {
   var urlStr =
     url +
     'get-game-numbers.php?sort=' +
@@ -119,7 +127,9 @@ export const getGameNumbers = (sort, gameid, stateid, userid, url, page) => {
     '&userid=' +
     userid +
     '&page=' +
-    page;
+    page +
+    '&currentMyNumbersPage=' +
+    currentMyNumbersPage;
 
   console.log('getGameNumbers: ' + urlStr);
 

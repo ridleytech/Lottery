@@ -11,7 +11,12 @@ import {Text, ListItem, Left, Body, Right, Title} from 'native-base';
 import {connect} from 'react-redux';
 import WeekItem from './WeekItem';
 import NumbersListTab from './NumbersListTab';
-import {selectNumbers, removeNumbers, sortMyNumbers} from '../actions';
+import {
+  selectNumbers,
+  removeNumbers,
+  sortMyNumbers,
+  setRefreshing,
+} from '../actions';
 import {
   getGameNumbers,
   manageNumbers,
@@ -48,6 +53,9 @@ class NumbersList extends Component<Props> {
     showTotal: true,
     quickAddVal: '',
     quickAddEnabled: false,
+    currentCombosPage: 0,
+    currentMyNumbersPage: 0,
+    refreshing: false,
   };
 
   static navigationOptions = {
@@ -55,7 +63,6 @@ class NumbersList extends Component<Props> {
       <Icon name={'user'} size={50} color={tintColor} />
     ),
   };
-
   componentDidMount() {
     this.props.getGameNumbers(
       0,
@@ -63,66 +70,21 @@ class NumbersList extends Component<Props> {
       this.props.selectedGame.stateid,
       this.props.userid,
       this.props.url,
-      this.props.gamesNumbersPage,
+      this.state.currentCombosPage,
+      this.state.currentMyNumbersPage,
     );
 
-    this.props.getUserNumbers(
-      this.props.userid,
-      this.props.selectedGame.gameid,
-      0,
-      this.props.url,
-      this.props.gamesMyNumbersPage,
-    );
+    // this.props.getUserNumbers(
+    //   this.props.userid,
+    //   this.props.selectedGame.gameid,
+    //   0,
+    //   this.props.url,
+    //   this.props.gamesMyNumbersPage,
+    // );
   }
 
   closeDetails() {
     this.props.noneContractSelected();
-  }
-
-  componentDidUpdate(prevProps, nextState) {
-    //console.log("update1: " + JSON.stringify(prevState) )
-
-    if (this.state.quickAddVal != nextState.quickAddVal) {
-      //console.log("quickValChanged")
-      this.validateQuickAdd();
-    }
-
-    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
-      //console.log('lastEditedNumbers changed');
-
-      //update state to show new list of handpicked numbes after add/removing
-      //disable for now
-
-      // this.setState({
-      //   showTotal: false,
-      //   sort: 1,
-      // });
-
-      this.setState({
-        quickAddVal: '',
-      });
-
-      //query latest numbers
-
-      this.props.getGameNumbers(
-        0,
-        this.props.selectedGame.gameid,
-        this.props.selectedGame.stateid,
-        this.props.userid,
-        this.props.url,
-        this.props.gamesMyNumbersPage,
-      );
-
-      console.log('reload user numbers');
-
-      this.props.getUserNumbers(
-        this.props.userid,
-        this.props.selectedGame.gameid,
-        0,
-        this.props.url,
-        this.props.gamesMyNumbersPage,
-      );
-    }
   }
 
   showCombos = () => {
@@ -132,14 +94,16 @@ class NumbersList extends Component<Props> {
       showTotal: true,
     });
 
-    this.props.getGameNumbers(
-      0,
-      this.props.selectedGame.gameid,
-      this.props.selectedGame.stateid,
-      this.props.userid,
-      this.props.url,
-      this.props.gamesNumbersPage,
-    );
+    if (this.props.gameNumbers.length == 0) {
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.props.gamesNumbersPage,
+      );
+    }
   };
 
   showMyNumbers = () => {
@@ -150,13 +114,15 @@ class NumbersList extends Component<Props> {
       sort: 0,
     });
 
-    this.props.getUserNumbers(
-      this.props.userid,
-      this.props.selectedGame.gameid,
-      0,
-      this.props.url,
-      this.props.gamesMyNumbersPage,
-    );
+    if (this.props.myGameNumbers.length == 0) {
+      this.props.getUserNumbers(
+        this.props.userid,
+        this.props.selectedGame.gameid,
+        0,
+        this.props.url,
+        this.props.gamesMyNumbersPage,
+      );
+    }
   };
 
   showAll = () => {
@@ -216,8 +182,23 @@ class NumbersList extends Component<Props> {
   }
 
   validateQuickAdd = () => {
-    var patt = /^[0-9]\s[0-9]\s[0-9]$/;
-    var pos = this.state.quickAddVal.match(patt);
+    var patt = this.props.selectedGame.validationPattern;
+    //var patt2 = /^[0-9]\s[0-9]\s[0-9]$/;
+
+    var patt3 = new RegExp(patt);
+
+    console.log('patt: ' + patt);
+    //console.log('patt2: ' + patt2);
+
+    //console.log('val: ' + this.state.quickAddVal);
+
+    // if (parseInt(this.props.gameid) == 1) {
+    //   patt = /^[0-9]\s[0-9]\s[0-9]$/;
+    // } else if (parseInt(this.props.gameid) == 2) {
+    //   patt = /^[0-9]\s[0-9]\s[0-9]\s[0-9]$/;
+    // }
+
+    var pos = this.state.quickAddVal.match(patt3);
     //console.log("pos: " + pos)
 
     if (pos) {
@@ -269,7 +250,7 @@ class NumbersList extends Component<Props> {
     console.log('changeVal: ' + val);
 
     if (val) {
-      if (val.length <= 5) {
+      if (val.length <= this.props.selectedGame.maxVals) {
         this.setState({
           quickAddVal: val,
         });
@@ -288,6 +269,123 @@ class NumbersList extends Component<Props> {
 
     this.props.navigation.pop();
   };
+
+  showNexPage = () => {
+    // this.setState({
+    //   currentCombosPage: this.state.currentCombosPage + 25,
+    // });
+  };
+
+  handleScroll = (e) => {
+    // console.log(
+    //   'scroll pos: ' +
+    //     e.nativeEvent.contentOffset.y +
+    //     ' size: ' +
+    //     e.nativeEvent.contentSize.height +
+    //     'ratio: ' +
+    //     e.nativeEvent.contentOffset.y / e.nativeEvent.contentSize.height,
+    // );
+
+    let ratio =
+      (e.nativeEvent.contentOffset.y / e.nativeEvent.contentSize.height) * 100;
+
+    //console.log('ratio: ' + ratio);
+
+    if (ratio > 90 && this.props.refreshing == false) {
+      console.log('bottom refresh');
+
+      this.props.setRefreshing();
+
+      this.setState({
+        currentCombosPage: this.state.currentCombosPage + 25,
+      });
+    } else if (
+      ratio < -1 &&
+      this.props.refreshing == false &&
+      this.state.currentCombosPage > 0
+    ) {
+      console.log('top refreshing: ' + this.state.currentCombosPage);
+
+      this.props.setRefreshing();
+
+      this.setState({
+        currentCombosPage: this.state.currentCombosPage - 25,
+      });
+    }
+  };
+
+  componentDidUpdate(prevProps, nextState) {
+    //console.log("update1: " + JSON.stringify(prevState) )
+
+    if (this.state.currentCombosPage != nextState.currentCombosPage) {
+      console.log('next page: ' + this.state.currentCombosPage);
+
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.state.currentCombosPage,
+        this.state.currentMyNumbersPage,
+      );
+
+      this.setState({
+        refreshing: false,
+      });
+    }
+
+    if (this.props.gameNumbers != prevProps.gameNumbers) {
+      this.flatList.current.scrollToOffset({animated: false, offset: 0});
+    }
+
+    if (this.state.quickAddVal != nextState.quickAddVal) {
+      //console.log("quickValChanged")
+      this.validateQuickAdd();
+    }
+
+    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
+      console.log(
+        'lastEditedNumbers numbers list: ' +
+          prevProps.lastEditedNumbers +
+          ' currentProps: ' +
+          this.props.lastEditedNumbers,
+      );
+
+      //update state to show new list of handpicked numbes after add/removing
+      //disable for now
+
+      // this.setState({
+      //   showTotal: false,
+      //   sort: 1,
+      // });
+
+      this.setState({
+        quickAddVal: '',
+      });
+
+      //query latest numbers
+
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.props.gamesMyNumbersPage,
+      );
+
+      // console.log('reload user numbers');
+
+      // this.props.getUserNumbers(
+      //   this.props.userid,
+      //   this.props.selectedGame.gameid,
+      //   0,
+      //   this.props.url,
+      //   this.props.gamesMyNumbersPage,
+      // );
+    }
+  }
 
   render() {
     //console.log('nl: ' + JSON.stringify(this.props));
@@ -364,6 +462,8 @@ class NumbersList extends Component<Props> {
             renderItem={(item) => (
               <NumbersItem item={item} selectItem={this.selectItem} />
             )}
+            onScroll={this.handleScroll.bind(this)}
+            onEndReached={() => this.showNexPage()}
             //key={(item) => item.gamerowid}
             keyExtractor={(item, index) => index.toString()}
           />
@@ -391,6 +491,7 @@ const mapStateToProps = (state) => {
     gamesMyNumbersPage: state.gamesMyNumbersPage,
     myGamesNumbersPage: state.myGamesNumbersPage,
     myGamesMyNumbersPage: state.myGamesMyNumbersPage,
+    refreshing: state.refreshing,
   };
 };
 
@@ -401,6 +502,7 @@ export default connect(mapStateToProps, {
   getUserNumbers,
   sortMyNumbers,
   manageGame,
+  setRefreshing,
 })(NumbersList);
 
 const styles = StyleSheet.create({

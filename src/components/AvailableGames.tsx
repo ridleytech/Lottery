@@ -26,7 +26,36 @@ class AvailableGames extends Component<Props> {
 
   componentDidMount() {
     this.props.getAvailableGames(this.props.userid, 1, this.props.url);
-    this.props.getMyGames(this.props.userid, this.props.url);
+    //this.props.getMyGames(this.props.userid, this.props.url);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
+      //user added/removed number from number list screen. now resfresh games info
+      console.log(
+        'lastEditedNumbers available games: ' +
+          prevProps.lastEditedNumbers +
+          ' currentProps: ' +
+          this.props.lastEditedNumbers,
+      );
+
+      // console.log('refresh available games');
+
+      // this.props.getAvailableGames(this.props.userid, 1, this.props.url);
+      // this.props.getMyGames(this.props.userid, this.props.url);
+    }
+
+    if (prevProps.games !== this.props.games && this.props.games.length > 0) {
+      //update UI for available numbers from refresh when users adds/removes number from numbers list screen
+      console.log('games changed available games');
+
+      // this.props.games.map((game) => {
+      //   if (game.gameid === this.props.selectedGame.gameid) {
+      //     console.log('update game: ' + JSON.stringify(game));
+      //     this.props.selectGame(game);
+      //   }
+      // });
+    }
   }
 
   selectGame(item) {
@@ -50,9 +79,6 @@ class AvailableGames extends Component<Props> {
   };
 
   listItem = ({item}) => {
-    var flag;
-    flag = Cash3;
-
     return (
       <ListItem
         style={[styles.listitem2]}
@@ -66,8 +92,6 @@ class AvailableGames extends Component<Props> {
             minutes={60}
             url={this.props.url}
           />
-
-          {/* <Image source={ChevronIcon} style={styles.chevron} /> */}
         </Body>
       </ListItem>
     );
@@ -86,6 +110,7 @@ class AvailableGames extends Component<Props> {
           style={styles.list}
           data={this.props.games}
           renderItem={this.listItem}
+          extraData={this.state}
           keyExtractor={(item, index) => index.toString()}
           gamesHeaderIndices={this.props.gamesHeaderIndices}
         />
@@ -99,6 +124,8 @@ const mapStateToProps = (state) => {
     url: state.url,
     userid: state.userid,
     games: state.games,
+    lastEditedNumbers: state.lastEditedNumbers,
+    selectedGame: state.selectedGame,
   };
 };
 

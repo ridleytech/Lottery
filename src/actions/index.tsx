@@ -76,18 +76,9 @@ export const updateDestinationIndex = (value: string, index: number) => {
   };
 };
 
-export const recordingSelected = (status, btn) => {
+export const setRefreshing = (status, btn) => {
   return {
-    type: 'SELECTED_RECORDING',
-    selectedStatus: status,
-    btn: btn,
-  };
-};
-
-export const playSelected = (status) => {
-  return {
-    type: 'SELECTED_PLAY',
-    selectedStatus: status,
+    type: 'SET_REFRESHING',
   };
 };
 
