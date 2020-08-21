@@ -1,78 +1,88 @@
 import React, {Component} from 'react';
 import {
   View,
-  StyleSheet,
-  FlatList,
-  Dimensions,
   Image,
   TouchableOpacity,
   Text,
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
+
+import {ListItem, Body} from 'native-base';
+import AddNumberIcon from '../../images/add-number-icon.png';
+import RemoveNumberIcon from '../../images/remove-number-icon.png';
+
 import {connect} from 'react-redux';
 
-import {showPlayed} from '../actions';
+import {selectNumbers} from '../../actions';
 
-class MostLeastPlayed extends Component<Props> {
+class NumbersRow extends Component<Props> {
   constructor(props: Props) {
     super(props);
   }
 
-  showPlayed(status: Boolean) {
-    this.props.showPlayed(status);
-
-    this.props.getGameNumbers(
-      status,
-      this.props.selectedGame.gameid,
-      this.props.selectedGame.stateid,
-      this.props.url,
-    );
+  selectItem(item) {
+    // console.log('number item: ' + JSON.stringify(item.numbers));
+    // if (this.props.selectedNumbers.includes(item.numbers)) {
+    //   console.log('has numbers');
+    //   this.props.removeNumbers(item);
+    // } else {
+    //   console.log('add numbers');
+    //   this.props.selectNumbers(item);
+    // }
   }
 
   render() {
+    const {item} = this.props;
+
+    //console.log('item: ' + JSON.stringify(item));
+    var numbers = item.item.numbers.split(' ');
+
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: 16,
-          marginBottom: 10,
-          marginLeft: 20,
-          width: Dimensions.get('window').width - 40,
-        }}>
-        <TouchableOpacity
-          style={{marginRight: 8}}
-          onPress={() => this.showPlayed(true)}>
-          <Text
-            style={
-              this.props.mostPlayed
-                ? styles.playedActive
-                : styles.playedDisabled
-            }>
-            Most Played
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.showPlayed(false)}>
-          <Text
-            style={
-              this.props.mostPlayed
-                ? styles.playedDisabled
-                : styles.playedActive
-            }>
-            Least Played
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <ListItem style={[styles.listitem2]} noBorder>
+        <Body style={styles.cellInfo}>
+          <View style={styles.container} key={item.item.order}>
+            <View style={styles.view3}>
+              <TouchableOpacity onPress={() => this.selectItem(item.item)}>
+                <Image
+                  source={item.item.selected ? RemoveNumberIcon : AddNumberIcon}
+                  style={styles.selectIcon}
+                />
+              </TouchableOpacity>
+
+              <Text style={styles.orderCell}>{item.item.order}.</Text>
+
+              {numbers.map((numberItem, index) => {
+                return (
+                  <>
+                    <View style={styles.numberShadow} key={index}>
+                      <Text style={styles.numberCell}>{numberItem}</Text>
+                    </View>
+                  </>
+                );
+              })}
+            </View>
+
+            <Text style={styles.playedCell}>
+              Played by {item.item.assignedTotal} users
+            </Text>
+          </View>
+
+          {/* <Image source={ChevronIcon} style={styles.chevron} /> */}
+        </Body>
+      </ListItem>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    url: state.url,
-    selectedGame: state.selectedGame,
+    gameNumbers: state.gameNumbers,
+    selectedNumbers: state.selectedNumbers,
   };
 };
 
-export default connect(mapStateToProps, {showPlayed})(MostLeastPlayed);
+export default connect(mapStateToProps, {selectNumbers})(NumbersRow);
 
 const styles = StyleSheet.create({
   list: {marginBottom: 300},

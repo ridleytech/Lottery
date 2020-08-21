@@ -4,37 +4,45 @@ import {
   StyleSheet,
   FlatList,
   Dimensions,
-  Image,
+  Animated,
   TouchableOpacity,
+  ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
 import {Text, ListItem, Left, Body, Right, Title} from 'native-base';
 import {connect} from 'react-redux';
 import WeekItem from './WeekItem';
 import NumbersListTab from './NumbersListTab';
-import {selectNumbers, removeNumbers, sortMyNumbers} from '../actions';
+import {
+  selectNumbers,
+  removeNumbers,
+  sortMyNumbers,
+  setRefreshing,
+} from '../../actions';
 import {
   getGameNumbers,
   manageNumbers,
   updateNumber,
   getUserNumbers,
   manageGame,
-} from '../thunks';
+} from '../../thunks';
 
-import Cash3 from '../images/cash3.png';
-import SearchIcon from '../images/search-icon.png';
-import AddNumberIcon from '../images/add-number-icon.png';
-import RemoveNumberIcon from '../images/remove-number-icon.png';
-import {TextInput} from 'react-native-gesture-handler';
-import GameInfo from './GameInfo';
+import GameInfo from '../GameInfo';
 import NumbersRow from './NumbersRow';
 import MostLeastPlayed from './MostLeastPlayed';
 import MyNumbersOptions2 from './MyNumbersOptions2';
+import QuickAdd from './QuickAdd';
+import NumbersItem from './NumbersItem';
+import PagingView from './PagingView';
+import MoveBall from './MoveBall';
 
 // https://reactnative.dev/docs/flexbox
 
 class NumbersList extends Component<Props> {
   constructor(props: Props) {
     super(props);
+
+    this.selectItem = this.selectItem.bind(this);
   }
 
   flatList = createRef<FlatList<any>>();
@@ -44,6 +52,11 @@ class NumbersList extends Component<Props> {
     showTotal: true,
     quickAddVal: '',
     quickAddEnabled: false,
+    currentCombosPage: 0,
+    currentMyNumbersPage: 0,
+    refreshing: false,
+    showStatus: false,
+    canRefresh: false,
   };
 
   static navigationOptions = {
@@ -51,7 +64,6 @@ class NumbersList extends Component<Props> {
       <Icon name={'user'} size={50} color={tintColor} />
     ),
   };
-
   componentDidMount() {
     this.props.getGameNumbers(
       0,
@@ -59,84 +71,22 @@ class NumbersList extends Component<Props> {
       this.props.selectedGame.stateid,
       this.props.userid,
       this.props.url,
+      this.state.currentCombosPage,
+      this.state.currentMyNumbersPage,
+      this.props.currentScreen,
     );
 
-    this.props.getUserNumbers(
-      this.props.userid,
-      this.props.selectedGame.gameid,
-      0,
-      this.props.url,
-    );
+    // this.props.getUserNumbers(
+    //   this.props.userid,
+    //   this.props.selectedGame.gameid,
+    //   0,
+    //   this.props.url,
+    //   this.props.gamesMyNumbersPage,
+    // );
   }
 
   closeDetails() {
     this.props.noneContractSelected();
-  }
-
-  componentDidUpdate(prevProps, nextState) {
-    //console.log("update1: " + JSON.stringify(prevState) )
-
-    if (this.state.quickAddVal != nextState.quickAddVal) {
-      //console.log("quickValChanged")
-      this.validateQuickAdd();
-    }
-
-    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
-      //console.log('lastEditedNumbers changed');
-
-      //update state to show new list of handpicked numbes after add/removing
-      //disable for now
-
-      // this.setState({
-      //   showTotal: false,
-      //   sort: 1,
-      // });
-
-      this.setState({
-        quickAddVal: '',
-      });
-
-      //query latest numbers
-
-      this.props.getGameNumbers(
-        0,
-        this.props.selectedGame.gameid,
-        this.props.selectedGame.stateid,
-        this.props.userid,
-        this.props.url,
-      );
-
-      console.log('reload user numbers');
-
-      this.props.getUserNumbers(
-        this.props.userid,
-        this.props.selectedGame.gameid,
-        0,
-        this.props.url,
-      );
-
-      // if (this.state.addingNumber) {
-      //   setTimeout(() => {
-      //     this.flatList.current.scrollToEnd();
-      //   }, 500);
-      // }
-    }
-
-    // if (prevProps.gameNumbers !== this.props.gameNumbers) {
-    //   console.log('gameNumbers changed');
-    // }
-
-    // if (prevProps.selectedNumbers !== this.props.selectedNumbers) {
-    //   console.log('selectedNumbers changed');
-
-    //   //call webservice
-
-    //   this.props.updateNumber(
-    //     this.props.selectedNumber,
-    //     this.state.addingNumber,
-    //     this.props.url,
-    //   );
-    // }
   }
 
   showCombos = () => {
@@ -146,13 +96,17 @@ class NumbersList extends Component<Props> {
       showTotal: true,
     });
 
-    this.props.getGameNumbers(
-      0,
-      this.props.selectedGame.gameid,
-      this.props.selectedGame.stateid,
-      this.props.userid,
-      this.props.url,
-    );
+    if (this.props.gameNumbers.length == 0) {
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.props.gamesNumbersPage,
+        this.props.currentScreen,
+      );
+    }
   };
 
   showMyNumbers = () => {
@@ -163,12 +117,15 @@ class NumbersList extends Component<Props> {
       sort: 0,
     });
 
-    this.props.getUserNumbers(
-      this.props.userid,
-      this.props.selectedGame.gameid,
-      0,
-      this.props.url,
-    );
+    if (this.props.myGameNumbers.length == 0) {
+      this.props.getUserNumbers(
+        this.props.userid,
+        this.props.selectedGame.gameid,
+        0,
+        this.props.url,
+        this.props.gamesMyNumbersPage,
+      );
+    }
   };
 
   showAll = () => {
@@ -191,14 +148,11 @@ class NumbersList extends Component<Props> {
 
   selectItem(item) {
     console.log('number item: ' + JSON.stringify(item));
-
-    //to do
-    //refactor this to update myGameNumbers prop
-    //move from actions to thunks
+    //console.log('state: ' + JSON.stringify(this.state));
 
     var status;
 
-    if (item.selected == true) {
+    if (item.item.selected == true) {
       console.log('remove numbers');
       //this.props.removeNumbers(item);
 
@@ -218,19 +172,8 @@ class NumbersList extends Component<Props> {
       });
     }
 
-    //numbers,
-    // stateid,
-    // gameid,
-    // timeofday,
-    // userid,
-    // status,
-    // quickAdd,
-    // url,
-
-    //return;
-
     this.props.manageNumbers(
-      item.numbers,
+      item.item.numbers,
       1,
       this.props.selectedGame.gameid,
       1,
@@ -242,8 +185,23 @@ class NumbersList extends Component<Props> {
   }
 
   validateQuickAdd = () => {
-    var patt = /^[0-9]\s[0-9]\s[0-9]$/;
-    var pos = this.state.quickAddVal.match(patt);
+    var patt = this.props.selectedGame.validationPattern;
+    //var patt2 = /^[0-9]\s[0-9]\s[0-9]$/;
+
+    var patt3 = new RegExp(patt);
+
+    console.log('patt: ' + patt);
+    //console.log('patt2: ' + patt2);
+
+    //console.log('val: ' + this.state.quickAddVal);
+
+    // if (parseInt(this.props.gameid) == 1) {
+    //   patt = /^[0-9]\s[0-9]\s[0-9]$/;
+    // } else if (parseInt(this.props.gameid) == 2) {
+    //   patt = /^[0-9]\s[0-9]\s[0-9]\s[0-9]$/;
+    // }
+
+    var pos = this.state.quickAddVal.match(patt3);
     //console.log("pos: " + pos)
 
     if (pos) {
@@ -292,12 +250,14 @@ class NumbersList extends Component<Props> {
   };
 
   changeVal = (val) => {
-    //console.log("changeVal: "+val)
+    console.log('changeVal: ' + val);
 
-    if (val.length <= 5) {
-      this.setState({
-        quickAddVal: val,
-      });
+    if (val) {
+      if (val.length <= this.props.selectedGame.maxVals) {
+        this.setState({
+          quickAddVal: val,
+        });
+      }
     }
   };
 
@@ -313,45 +273,163 @@ class NumbersList extends Component<Props> {
     this.props.navigation.pop();
   };
 
-  numbersRenderItem = ({item}) => {
-    //console.log('stuff: ' + JSON.stringify(item));
-    var numbers = item.numbers.split(' ');
-
-    return (
-      <ListItem style={[styles.listitem2]} noBorder>
-        <Body style={styles.cellInfo}>
-          <View style={styles.container} key={item.order}>
-            <View style={styles.view3}>
-              <TouchableOpacity onPress={() => this.selectItem(item)}>
-                <Image
-                  source={item.selected ? RemoveNumberIcon : AddNumberIcon}
-                  style={styles.selectIcon}
-                />
-              </TouchableOpacity>
-
-              <Text style={styles.orderCell}>{item.order}.</Text>
-
-              {numbers.map((numberItem, index) => {
-                return (
-                  <>
-                    <View style={styles.numberShadow} key={index}>
-                      <Text style={styles.numberCell}>{numberItem}</Text>
-                    </View>
-                  </>
-                );
-              })}
-            </View>
-
-            <Text style={styles.playedCell}>
-              Played by {item.assignedTotal} users
-            </Text>
-          </View>
-
-          {/* <Image source={ChevronIcon} style={styles.chevron} /> */}
-        </Body>
-      </ListItem>
-    );
+  handleRefresh = () => {
+    console.log('show previous records');
   };
+
+  showNexPage = () => {
+    console.log('show more records');
+
+    this.setState({
+      showStatus: true,
+      canRefresh: false,
+    });
+
+    //this.flatList.current.scrollToOffset({animated: false, offset: 0});
+    // this.setState({
+    //   currentCombosPage: this.state.currentCombosPage + 25,
+    // });
+  };
+
+  handleScroll = (e) => {
+    let ratio =
+      (e.nativeEvent.contentOffset.y / e.nativeEvent.contentSize.height) * 100;
+    console.log('ratio: ' + ratio);
+
+    if (this.state.canRefresh == true && ratio < 1) {
+      this.combinationsPaging(ratio);
+
+      this.setState({
+        canRefresh: false,
+        showStatus: true,
+      });
+    }
+
+    if (this.state.canRefresh == false && (ratio > 20 || ratio > 80)) {
+      console.log('can refresh');
+      this.setState({
+        canRefresh: true,
+        showStatus: false,
+      });
+    }
+  };
+
+  combinationsPaging = (ratio) => {
+    if (ratio < 85) {
+      this.setState({
+        showStatus: false,
+      });
+    } else if (ratio < -1) {
+      console.log('top refreshing: ' + this.state.currentCombosPage);
+
+      this.setState({
+        showStatus: true,
+      });
+    }
+  };
+
+  combinationsPaging1 = (ratio) => {
+    if (
+      ratio > 90 &&
+      !this.props.refreshing &&
+      this.state.currentCombosPage < this.props.selectedGame.combinations
+    ) {
+      console.log('bottom refresh');
+
+      this.props.setRefreshing('bottom');
+
+      this.setState({
+        currentCombosPage: this.state.currentCombosPage + 25,
+      });
+    } else if (
+      ratio < -1 &&
+      !this.props.refreshing &&
+      this.state.currentCombosPage > 0
+    ) {
+      console.log('top refreshing: ' + this.state.currentCombosPage);
+
+      this.props.setRefreshing('top');
+
+      this.setState({
+        currentCombosPage: this.state.currentCombosPage - 25,
+      });
+    }
+  };
+
+  componentDidUpdate(prevProps, nextState) {
+    //console.log("update1: " + JSON.stringify(prevState) )
+
+    if (this.state.currentCombosPage != nextState.currentCombosPage) {
+      console.log('next page: ' + this.state.currentCombosPage);
+
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.state.currentCombosPage,
+        this.state.currentMyNumbersPage,
+        this.props.currentScreen,
+      );
+
+      this.setState({
+        refreshing: false,
+      });
+    }
+
+    if (this.props.gameNumbers != prevProps.gameNumbers) {
+      this.flatList.current.scrollToOffset({animated: false, offset: 0});
+    }
+
+    if (this.state.quickAddVal != nextState.quickAddVal) {
+      //console.log("quickValChanged")
+      this.validateQuickAdd();
+    }
+
+    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
+      console.log(
+        'lastEditedNumbers numbers list: ' +
+          prevProps.lastEditedNumbers +
+          ' currentProps: ' +
+          this.props.lastEditedNumbers,
+      );
+
+      //update state to show new list of handpicked numbes after add/removing
+      //disable for now
+
+      // this.setState({
+      //   showTotal: false,
+      //   sort: 1,
+      // });
+
+      this.setState({
+        quickAddVal: '',
+      });
+
+      //query latest numbers
+
+      this.props.getGameNumbers(
+        0,
+        this.props.selectedGame.gameid,
+        this.props.selectedGame.stateid,
+        this.props.userid,
+        this.props.url,
+        this.props.gamesMyNumbersPage,
+        this.props.currentScreen,
+      );
+
+      // console.log('reload user numbers');
+
+      // this.props.getUserNumbers(
+      //   this.props.userid,
+      //   this.props.selectedGame.gameid,
+      //   0,
+      //   this.props.url,
+      //   this.props.gamesMyNumbersPage,
+      // );
+    }
+  }
 
   render() {
     //console.log('nl: ' + JSON.stringify(this.props));
@@ -388,56 +466,18 @@ class NumbersList extends Component<Props> {
                   viewingNumbers={true}
                   manageGame={() => this.manageGame(this.props.selectedGame)}
                   minutes={60}
-                  minutes={60}
                   url={this.props.url}
                 />
               </Body>
             </ListItem>
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 22,
-              marginBottom: 27,
-              marginLeft: 20,
-              width: Dimensions.get('window').width - 40,
-            }}>
-            {/* <Text style={styles.playedActive}>Most Played</Text> */}
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <TextInput
-                placeholder="Add Numbers"
-                style={{
-                  borderBottomWidth: 1,
-                  borderBottomColor: 'rgb(102,103,103)',
-                  width: 160,
-                  paddingBottom: 5,
-                  paddingRight: 20,
-                  fontSize: 12,
-                  fontFamily: 'HelveticaNeue-Italic',
-                  letterSpacing: 0.9,
-                }}
-                value={this.state.quickAddVal}
-                //onChangeText={(quickAddVal) => this.setState({quickAddVal})}
-                onChangeText={(text) => this.changeVal(text)}></TextInput>
-              <Image source={SearchIcon} style={styles.searchIcon} />
-            </View>
 
-            <View style={styles.numberShadow}>
-              <TouchableOpacity
-                onPress={() => this.submitQuickAdd()}
-                disabled={!this.state.quickAddEnabled}>
-                <Text
-                  style={
-                    this.state.quickAddEnabled
-                      ? styles.quickAdd
-                      : styles.quickAddDisabled
-                  }>
-                  Quick Add
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <QuickAdd
+            quickAddVal={this.state.quickAddVal}
+            quickAddEnabled={this.state.quickAddEnabled}
+            submitQuickAdd={this.submitQuickAdd}
+            changeVal={this.changeVal}
+          />
 
           <NumbersListTab
             showMyNumbers={() => this.showMyNumbers()}
@@ -461,12 +501,52 @@ class NumbersList extends Component<Props> {
 
           <FlatList
             ref={this.flatList}
-            style={styles.list}
+            style={styles.numbersList}
             data={list}
-            //renderItem={(item) => <NumbersRow item={item} />}
-            renderItem={this.numbersRenderItem}
+            renderItem={(item) => (
+              <NumbersItem item={item} selectItem={this.selectItem} />
+            )}
+            //onScroll={this.handleScroll.bind(this)}
+            //onRefresh={this.handleRefresh()}
+            //onEndReached={() => this.showNexPage()}
+            //key={(item) => item.gamerowid}
             keyExtractor={(item, index) => index.toString()}
+            //onEndReachedThreshold={2}
+
+            // refreshControl={
+            //   <RefreshControl
+            //     refreshing={this.state.refreshing}
+            //     onRefresh={this._onRefresh}
+            //   />
+            // }
+
+            // ListHeaderComponent={
+            //   this.state.currentCombosPage > 0 &&
+            //   this.props.refreshing == 'top' ? (
+            //     <ActivityIndicator size="small" />
+            //   ) : null
+            // }
+            // ListFooterComponent={
+            //   this.props.refreshing == 'bottom' ? (
+            //     <ActivityIndicator size="small" />
+            //   ) : null
+            // }
           />
+
+          {/* <Animated.View style={styles.pagingView}>
+            <TouchableOpacity>
+              <Text style={{marginRight: 20}}>Previous</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>Next</Text>
+            </TouchableOpacity>
+          </Animated.View> */}
+
+          {/* <PagingView
+            bgC={'gray'}
+            startHeight={0}
+            showStatus={this.state.showStatus}
+          /> */}
         </View>
       </>
     );
@@ -491,6 +571,8 @@ const mapStateToProps = (state) => {
     gamesMyNumbersPage: state.gamesMyNumbersPage,
     myGamesNumbersPage: state.myGamesNumbersPage,
     myGamesMyNumbersPage: state.myGamesMyNumbersPage,
+    refreshing: state.refreshing,
+    currentScreen: state.currentScreen,
   };
 };
 
@@ -501,10 +583,28 @@ export default connect(mapStateToProps, {
   getUserNumbers,
   sortMyNumbers,
   manageGame,
+  setRefreshing,
 })(NumbersList);
 
 const styles = StyleSheet.create({
-  list: {marginBottom: 300},
+  am: {
+    position: 'absolute',
+    top: Dimensions.get('window').height / 2,
+    left: Dimensions.get('window').width / 2,
+  },
+  pagingView: {
+    paddingTop: 8,
+    height: 50,
+    backgroundColor: 'red',
+    width: Dimensions.get('window').width,
+    marginBottom: 300,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  numbersList: {
+    //backgroundColor: 'blue',
+    height: Dimensions.get('window').height - 450,
+  },
   searchIcon: {width: 20, height: 20, marginLeft: -15},
   playedActive: {
     width: 110,

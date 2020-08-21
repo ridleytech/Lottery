@@ -22,12 +22,42 @@ import GameInfo from './GameInfo';
 class AvailableGames extends Component<Props> {
   constructor(props: Props) {
     super(props);
+
+    //console.log('props: ' + JSON.stringify(props));
+
+    //props.navigation.navigator.setOnNavigatorEvent(
+    //this.onNavigatorEvent.bind(this),
+    //);
+  }
+
+  onNavigatorEvent(event) {
+    console.log('nav event');
+    // if (event.id === 'bottomTabSelected') {
+    //   console.log('Tab selected!');
+    // }
+    // if (event.id === 'bottomTabReselected') {
+    //   console.log('Tab reselected!');
+    // }
   }
 
   componentDidMount() {
     this.props.getAvailableGames(this.props.userid, 1, this.props.url);
     //this.props.getMyGames(this.props.userid, this.props.url);
+
+    //this.props.testThunk();
+
+    // var ar = [1, 2, 3];
+
+    // var total = ar.reduce(ar, 5);
+
+    // console.log('total: ' + total);
   }
+
+  addVals = (acc, cv) => {
+    return acc + cv;
+  };
+
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 
   componentDidUpdate(prevProps) {
     if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
@@ -62,7 +92,7 @@ class AvailableGames extends Component<Props> {
     if (item.joined == '1') {
       this.props.selectGame(item);
 
-      this.props.navigation.push('NumbersList');
+      this.props.navigation.navigate('NumbersList');
     } else {
       console.log('please join game');
     }

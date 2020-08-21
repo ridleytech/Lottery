@@ -4,6 +4,15 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -43,7 +52,28 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [AppCenterReactNative register];
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+  [AppCenterReactNative register];
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+  
+  
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+openURL:url
+sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+];
+// Add any custom logic here.
+return handled;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

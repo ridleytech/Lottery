@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-import SearchIcon from '../images/search-icon.png';
+import SearchIcon from '../../images/search-icon.png';
 
 function QuickAdd({quickAddVal, quickAddEnabled, submitQuickAdd, changeVal}) {
   return (

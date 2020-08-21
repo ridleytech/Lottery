@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
-import {authUser} from '../actions';
+import {authUser} from '../../actions';
 
 class SignIn extends Component<Props> {
   constructor(props: Props) {

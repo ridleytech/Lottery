@@ -9,9 +9,9 @@ import {
   Text,
 } from 'react-native';
 
-import {showPlayed} from '../actions';
+import {showPlayed} from '../../actions';
 import {connect} from 'react-redux';
-import {getGameNumbers} from '../thunks';
+import {getGameNumbers} from '../../thunks';
 
 class MostLeastPlayed extends Component<Props> {
   constructor(props: Props) {

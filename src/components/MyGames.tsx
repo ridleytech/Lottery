@@ -34,7 +34,7 @@ class MyGames extends Component<Props> {
     if (item.joined == '1') {
       this.props.selectGame(item);
 
-      this.props.navigation.push('NumbersList2');
+      this.props.navigation.navigate('NumbersList2');
     } else {
       console.log('please join game');
     }

@@ -1,12 +1,4 @@
-export const calculateOffer = (txt: string, val: Number) => {
-  return {
-    type: 'CALCULATE_OFFER',
-    txt: txt,
-    val: val,
-  };
-};
-
-export const authUser = (user) => {
+export const authUser = (user: any) => {
   //console.log('action authUser: ' + JSON.stringify(user));
 
   return {
@@ -30,73 +22,26 @@ export const clearField = (txt: string) => {
   };
 };
 
-export const selectHome = () => {
-  return {
-    type: 'SELECTED_HOME',
-  };
-};
-
-export const selectGame = (game: Any) => {
+export const selectGame = (game: any) => {
   return {
     type: 'SELECTED_GAME',
     selectedGame: game,
   };
 };
 
-export const selectSettings = () => {
-  return {
-    type: 'SELECTED_SETTINGS',
-  };
-};
-
-export const viewAccount = (val) => {
-  console.log('viewAccount');
-
-  return {
-    type: 'SELECTED_VIEW_ACCOUNT',
-    state: val,
-  };
-};
-
-export const updateSourceIndex = (value: string, index: number) => {
-  return {
-    type: 'UPDATE_SOURCE_INDEX',
-    selectedSourceIndex: index,
-    selectedSource: value,
-    selectedDestinationIndex: 0,
-    selectedDestination: 'Select translation',
-  };
-};
-
-export const updateDestinationIndex = (value: string, index: number) => {
-  return {
-    type: 'UPDATE_DESTINATION_INDEX',
-    selectedDestinationIndex: index,
-    selectedDestination: value,
-  };
-};
-
-export const setRefreshing = (status, btn) => {
+export const setRefreshing = (status: any) => {
   return {
     type: 'SET_REFRESHING',
+    status: status,
   };
 };
 
-// export const selectNumbers = (numbers) => {
-//   //console.log('selectNumbers');
-//   return {
-//     type: 'SELECT_NUMBERS',
-//     selectedNumbers: numbers,
-//   };
-// };
-
-// export const removeNumbers = (numbers) => {
-//   //console.log('selectNumbers');
-//   return {
-//     type: 'REMOVE_NUMBERS',
-//     selectedNumbers: numbers,
-//   };
-// };
+export const updateScreen = (screen: number) => {
+  return {
+    type: 'UPDATE_SCREEN',
+    screen: screen,
+  };
+};
 
 export const sortMyNumbers = (status) => {
   //console.log('selectNumbers');
@@ -112,14 +57,5 @@ export const showPlayed = (value) => {
   return {
     type: 'SHOW_MOST_PLAYED',
     mostPlayed: value,
-  };
-};
-
-export const formUpdate = ({prop, value}) => {
-  console.log(prop + ': ' + value);
-
-  return {
-    type: 'FORM_UPDATE',
-    payload: {prop, value},
   };
 };

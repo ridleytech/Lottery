@@ -16,18 +16,32 @@ class API extends Component {
     // });
   }
 
-  getAvailableGames = (stateid, url) => {
-    var urlStr = url + 'get-games.php?stateid=' + stateid;
+  testStuff = () => {
+    console.log('testing');
+  };
+
+  getAvailableGames = (stateid, userid) => {
+    var urlStr =
+      'http://localhost:8888/ridtech/lotto/' +
+      'get-available-games.php?userid=' +
+      userid +
+      '&stateid=' +
+      stateid;
 
     //console.log('getAvailableGames: ' + urlStr);
 
-    return fetch(urlStr)
-      .then((response) => {
-        //console.log('got em');
+    return (
+      fetch(urlStr)
+        .then((response) => {
+          //console.log('got em component');
 
-        return response.json();
-      })
-      .catch((error) => console.log(error));
+          return response.json();
+        })
+        // .then((response) => {
+        //   console.log('response: ' + JSON.stringify(response));
+        // })
+        .catch((error) => console.log(error))
+    );
   };
 
   render() {

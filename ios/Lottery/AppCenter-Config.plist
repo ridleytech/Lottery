@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   AppCenter-Config.plist
-   Lottery
-
-   Created by Randall Ridley on 8/16/20.
-   Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
-    
+    <key>AppSecret</key>
+    <string>7b631e78-7b80-47d5-8a5a-0dd0a867b9aa</string>
     </dict>
 </plist>

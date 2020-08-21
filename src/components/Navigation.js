@@ -4,23 +4,18 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {View, Image, StyleSheet} from 'react-native';
-import NumbersList from './NumbersList';
-//import ViewAccount from './ViewAccount';
+import NumbersList from './NumbersList/NumbersList';
 import AvailableGames from './AvailableGames';
 import CustomTabBar from './TabBar/CustomTabBar';
-
 //import API from './debug/API';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignIn from './Auth/SignIn';
+import SignUp from './Auth/SignUp';
 import Loading from './Loading';
-import Logout from './Logout';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import Logout from './Auth/Logout';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
 import {authUser} from '../actions';
-//import {Ionicons} from '@expo/vector-icons';
 import menuIcon from '../images/menu-icon.png';
-// import HeaderBackImg from './HeaderBackImg';
-// import CustomHeader from './CustomHeader';
 // import HeaderBackButton from './HeaderBackButton';
 import HeaderBack from '../images/header-back-icon.png';
 import MyGames from './MyGames';
@@ -36,6 +31,7 @@ const menuBtn = (props) => {
 };
 
 const BackBtn = (props, screen) => {
+  console.log('BackBtn');
   return (
     <View style={{marginLeft: 17, marginBottom: -13}}>
       <TouchableOpacity onPress={() => props.navigation.navigate(screen)}>
@@ -119,7 +115,7 @@ const MyGamesStackScreen = (props) => (
         headerLeft: () => menuBtn(props),
       }}
     />
-    <GamesStack.Screen
+    <MyGamesStack.Screen
       name="NumbersList2"
       component={NumbersList}
       options={{
@@ -167,7 +163,6 @@ const AppDrawerScreen = () => (
       component={AppTabsScreen}
       options={{drawerLabel: 'Games'}}
     />
-    {/* <AppDrawer.Screen name="Settings" component={SettingsStackScreen} /> */}
     <AppDrawer.Screen name="Log Out" component={Logout} />
   </AppDrawer.Navigator>
 );
@@ -177,9 +172,9 @@ const AppDrawerScreen = () => (
 const AuthStack = createStackNavigator();
 const AuthStackScreen = (props) => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator initialRouteName={SignIn}>
       <AuthStack.Screen
-        name="Sign In"
+        name="SignIn"
         component={SignIn}
         options={{
           headerTitle: ``,
@@ -197,7 +192,7 @@ const AuthStackScreen = (props) => {
           headerTintColor: 'white',
         }}
       />
-      <AuthStack.Screen name="Sign Up" component={SignUp} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
     </AuthStack.Navigator>
   );
 };
@@ -219,25 +214,34 @@ class Navigation extends Component {
         isLoading: !this.state.isLoading,
         //user: {username: 'ridley1224'},
       });
-
-      this.props.authUser({username: 'ridley1224', password: '1224'});
     }, 500);
+
+    //this.props.authUser({username: 'ridley1224', password: '1224'});
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <Loading />;
+    }
+
     return (
       <NavigationContainer>
-        {this.state.isLoading ? (
-          <Loading />
-        ) : this.props.user ? (
-          <AppDrawerScreen />
-        ) : (
-          <AuthStackScreen />
-        )}
+        <RootStackScreen props={this.props} />
       </NavigationContainer>
     );
   }
 }
+
+const RootStack = createStackNavigator();
+const RootStackScreen = ({userToken, props}) => (
+  <RootStack.Navigator headerMode="none">
+    {props.user ? (
+      <RootStack.Screen name="App" component={AppDrawerScreen} />
+    ) : (
+      <RootStack.Screen name="Auth" component={AuthStackScreen} />
+    )}
+  </RootStack.Navigator>
+);
 
 const mapStateToProps = (state) => {
   return {

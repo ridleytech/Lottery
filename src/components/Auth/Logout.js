@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
-import {logout} from '../actions';
+import {logout} from '../../actions';
+import {LoginManager} from 'react-native-fbsdk';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 class Logout extends Component<Props> {
   constructor(props: Props) {
@@ -9,12 +11,15 @@ class Logout extends Component<Props> {
   }
 
   componentDidMount() {
-    this.props.navigation.navigate('Tabs');
+    this.logout();
+  }
 
+  logout = () => {
     console.log('logout');
+    LoginManager.logOut();
 
     this.props.logout();
-  }
+  };
 
   render() {
     return (
@@ -23,7 +28,11 @@ class Logout extends Component<Props> {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-        }}></View>
+        }}>
+        <TouchableOpacity onPress={() => this.logout()}>
+          <Text>Logout</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

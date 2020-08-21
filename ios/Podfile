@@ -7,7 +7,7 @@ target 'Lottery' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  
   target 'LotteryTests' do
     inherit! :complete
     # Pods for testing

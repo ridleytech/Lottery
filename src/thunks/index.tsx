@@ -1,3 +1,5 @@
+import {c} from './actions';
+
 export const updateNumber = ({number, status, url}) => {
   console.log('saveNumber: ' + number);
 
@@ -115,6 +117,7 @@ export const getGameNumbers = (
   url,
   page,
   currentMyNumbersPage,
+  screen,
 ) => {
   var urlStr =
     url +
@@ -139,7 +142,7 @@ export const getGameNumbers = (
         return response.json();
       })
       .then((data) => {
-        dispatch({type: 'GAME_NUMBERS_FETCH', payload: data});
+        dispatch({type: 'GAME_NUMBERS_FETCH', payload: data, screen: screen});
       })
       .catch((error) => console.log(error));
   };
@@ -203,5 +206,28 @@ export const getMyGames = (userid, url) => {
         dispatch({type: 'MY_GAMES_FETCH', payload: data});
       })
       .catch((error) => console.log(error));
+  };
+};
+
+export const testThunk = () => {
+  return (dispatch) => {
+    fetch(
+      'http://localhost:8888/ridtech/lotto/get-available-games.php?stateid=1&userid=2&gameid=1',
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log('test thunk response: ' + response);
+      })
+      .then((response) => {
+        dispatch({
+          type: c.GET_DATA,
+          data: 'Nothing',
+        });
+      })
+      .catch((error) => {
+        console.log('test thunk error: ' + error);
+      });
   };
 };

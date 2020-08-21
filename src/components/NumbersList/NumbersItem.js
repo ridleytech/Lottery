@@ -1,5 +1,5 @@
-import RemoveNumberIcon from '../images/remove-number-icon.png';
-import AddNumberIcon from '../images/add-number-icon.png';
+import RemoveNumberIcon from '../../images/remove-number-icon.png';
+import AddNumberIcon from '../../images/add-number-icon.png';
 
 import React from 'react';
 import {
