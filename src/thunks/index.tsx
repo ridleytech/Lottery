@@ -109,6 +109,36 @@ export const manageGame = (item) => {
   };
 };
 
+export const authUser = (user, phone) => (dispatch, getState) => {
+  console.log('authUser: ' + JSON.stringify(user) + 'phone: ' + phone);
+
+  //return;
+  //user: user,
+
+  let url = getState().url;
+
+  fetch(url + `user-auth.php`, {
+    method: 'POST',
+    body: JSON.stringify({
+      firstname: user.first_name,
+      lastname: user.last_name,
+      fbid: user.id,
+      phone: phone,
+    }),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      dispatch({type: 'AUTH_USER', payload: response, user: user});
+    })
+    .catch((error) => console.log(error));
+};
+
 export const getGameNumbers = (
   sort,
   gameid,

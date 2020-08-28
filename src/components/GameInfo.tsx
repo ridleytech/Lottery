@@ -13,104 +13,105 @@ import {render} from '@testing-library/react-native';
 function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
   var flag = Cash3;
 
-  const [currentTime, setCurrentTime] = useState({time: ''});
+  // const [currentTime, setCurrentTime] = useState({time: ''});
 
-  let seconds = minutes * 60;
-  let totalTime = seconds * 100;
-  var usedTime = 0;
-  var startTime = +new Date();
-  var timer = null;
+  // let seconds = minutes * 60;
+  // let totalTime = seconds * 100;
+  // var usedTime = 0;
+  // var startTime = +new Date();
+  // var timer = null;
 
-  useEffect(() => {
-    //timer = setInterval(count, 10);
+  // useEffect(() => {
+  //   //timer = setInterval(count, 10);
 
-    setCurrentTime({time: '00:00.00'});
-  }, []);
+  //   setCurrentTime({time: '00:00.00'});
+  // }, []);
 
-  var count = function () {
-    usedTime = Math.floor((+new Date() - startTime) / 10);
+  // var count = function () {
+  //   usedTime = Math.floor((+new Date() - startTime) / 10);
 
-    var tt = totalTime - usedTime;
-    if (tt <= 0) {
-      setCurrentTime({time: '00:00.00'});
+  //   var tt = totalTime - usedTime;
+  //   if (tt <= 0) {
+  //     setCurrentTime({time: '00:00.00'});
 
-      clearInterval(timer);
+  //     clearInterval(timer);
+  //   } else {
+  //     var mi = Math.floor(tt / (60 * 100));
+  //     var ss = Math.floor((tt - mi * 60 * 100) / 100);
+  //     var ms = tt - Math.floor(tt / 100) * 100;
+
+  //     setCurrentTime({
+  //       time: fillZero(mi) + ':' + fillZero(ss) + '.' + fillZero(ms),
+  //     });
+  //   }
+  // };
+
+  var fillZero = function (num) {
+    if (num === 0) {
+      return '00';
     } else {
-      var mi = Math.floor(tt / (60 * 100));
-      var ss = Math.floor((tt - mi * 60 * 100) / 100);
-      var ms = tt - Math.floor(tt / 100) * 100;
-
-      setCurrentTime({
-        time: fillZero(mi) + ':' + fillZero(ss) + '.' + fillZero(ms),
-      });
+      return num < 10 ? '0' + num : num;
     }
   };
 
-  var fillZero = function (num) {
-    return num < 10 ? '0' + num : num;
+  function timezoneShifter(date, timezone) {
+    let isBehindGTM = false;
+    if (timezone.startsWith('-')) {
+      timezone = timezone.substr(1);
+      isBehindGTM = true;
+    }
+
+    const [hDiff, mDiff] = timezone.split(':').map((t) => parseInt(t));
+    const diff = hDiff * 60 + mDiff * (isBehindGTM ? 1 : -1);
+    const currentDiff = new Date().getTimezoneOffset();
+
+    return new Date(date.valueOf() + (currentDiff - diff) * 60 * 1000);
+  }
+
+  const calculateTimeLeft = () => {
+    //let year = new Date().getFullYear();
+    //const difference = +new Date(`8 24, 2020 ${item.nextDraw}:00:00`) - +new Date();
+
+    const difference = +new Date(item.nextDraw.date) - +new Date();
+
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        //days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
   };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  //const [year] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval) => {
+    // if (!timeLeft[interval]) {
+    //   return;
+    // }
+
+    timerComponents.push(<Text>{fillZero(timeLeft[interval])}</Text>);
+  });
+
+  //console.log('timerComponents: ' + JSON.stringify(timerComponents));
 
   let image = url + '/images/lottery/' + item.image;
 
-  //console.log('image: ' + image);
-
-  // let Countdown = (elem, seconds) => {
-  //   var that = {};
-
-  //   that.elem = elem;
-  //   that.seconds = seconds;
-  //   that.totalTime = seconds * 100;
-  //   that.usedTime = 0;
-  //   that.startTime = +new Date();
-  //   that.timer = null;
-
-  //   that.count = function () {
-  //     that.usedTime = Math.floor((+new Date() - that.startTime) / 10);
-
-  //     var tt = that.totalTime - that.usedTime;
-  //     if (tt <= 0) {
-  //       that.elem.innerHTML = '00:00.00';
-  //       clearInterval(that.timer);
-  //     } else {
-  //       var mi = Math.floor(tt / (60 * 100));
-  //       var ss = Math.floor((tt - mi * 60 * 100) / 100);
-  //       var ms = tt - Math.floor(tt / 100) * 100;
-
-  //       that.elem.innerHTML =
-  //         that.fillZero(mi) + ':' + that.fillZero(ss) + '.' + that.fillZero(ms);
-  //     }
-  //   };
-
-  //   that.init = function () {
-  //     if (that.timer) {
-  //       clearInterval(that.timer);
-  //       that.elem.innerHTML = '00:00.00';
-  //       that.totalTime = seconds * 100;
-  //       that.usedTime = 0;
-  //       that.startTime = +new Date();
-  //       that.timer = null;
-  //     }
-  //   };
-
-  //   that.start = function () {
-  //     if (!that.timer) {
-  //       that.timer = setInterval(that.count, 10);
-  //     }
-  //   };
-
-  //   that.stop = function () {
-  //     console.log('usedTime = ' + countdown.usedTime);
-  //     if (that.timer) clearInterval(that.timer);
-  //   };
-
-  //   that.fillZero = function (num) {
-  //     return num < 10 ? '0' + num : num;
-  //   };
-
-  //   return that;
-  // };
-
-  //console.log('image: ' + image);
+  const _now = new Date();
 
   return (
     <View style={styles.container2}>
@@ -148,7 +149,19 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
         <View>
           <Text style={[styles.nextDraw]}>
             Next Draw -{' '}
-            <Text style={[styles.nextDraw2]}>{currentTime.time}</Text>
+            {/* <Text style={[styles.nextDraw2]}>{currentTime.time}</Text> */}
+            {timerComponents.length ? (
+              <Text style={[styles.nextDraw2]}>
+                {fillZero(timerComponents[0])}
+                {':'}
+                {fillZero(timerComponents[1])}
+                {':'}
+                {fillZero(timerComponents[2])}
+              </Text>
+            ) : (
+              <Text>Time's up!</Text>
+            )}
+            {/* <Text>{timezoneShifter(_now, '-04:00').toLocaleString()}</Text> */}
           </Text>
         </View>
       </View>
@@ -365,6 +378,8 @@ const styles = StyleSheet.create({
     marginTop: 14,
     fontFamily: 'HelveticaNeue',
     letterSpacing: 0.3,
+    //backgroundColor: 'red',
+    minWidth: 140,
   },
   nextDraw2: {
     fontSize: 11,

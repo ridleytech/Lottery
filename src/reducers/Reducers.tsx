@@ -60,10 +60,16 @@ const initialState = {
 export default (state = initialState, action: any) => {
   switch (action.type) {
     case 'AUTH_USER':
-      console.log('redux user: ' + JSON.stringify(action.user));
+      console.log(
+        'redux user: ' +
+          JSON.stringify(action.user) +
+          'payload: ' +
+          JSON.stringify(action.payload),
+      );
       return {
         ...state,
         user: action.user,
+        payload: action.payload,
       };
 
     case 'LOGOUT_USER':

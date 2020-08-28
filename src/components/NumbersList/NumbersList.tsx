@@ -542,11 +542,7 @@ class NumbersList extends Component<Props> {
             </TouchableOpacity>
           </Animated.View> */}
 
-          {/* <PagingView
-            bgC={'gray'}
-            startHeight={0}
-            showStatus={this.state.showStatus}
-          /> */}
+          {/* <PagingView bgC={'gray'} /> */}
         </View>
       </>
     );

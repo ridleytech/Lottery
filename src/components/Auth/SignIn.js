@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet, Alert} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
-import {authUser} from '../../actions';
-import FBLoginButton from './FBLoginButton';
+import {authUser} from '../../thunks';
+//import FBLoginButton from './FBLoginButton';
 import FBDisabled from '../../images/fb-login-disabled.png';
 
 import {
@@ -26,6 +26,7 @@ class SignIn extends Component<Props> {
   state = {
     myInformation: {},
     quickAddVal: '',
+    phone: null,
   };
 
   authUserDebug = () => {
@@ -55,7 +56,7 @@ class SignIn extends Component<Props> {
           this.setState({myInformation: myProfileInfoResult});
           console.log('result:', myProfileInfoResult);
 
-          this.props.authUser(myProfileInfoResult);
+          this.props.authUser(myProfileInfoResult, this.state.quickAddVal);
         }
       },
     );
