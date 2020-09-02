@@ -3,9 +3,9 @@ import {act} from 'react-test-renderer';
 //import {initialState} from '../data/initialState';
 
 var local: Boolean = true;
-var localPath = 'http://localhost:8888/ridtech/lotto/';
-var remotePath = 'http://agiledevelopment.xyz/lotto/';
-remotePath = 'http://ridleytechnologies.com/lotto/';
+var localPath = 'http://localhost:8888/ridleytech/lottery/';
+var remotePath = 'http://agiledevelopment.xyz/lottery/';
+remotePath = 'http://ridleytechnologies.com/lottery/';
 
 var url;
 

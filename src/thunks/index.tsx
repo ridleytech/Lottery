@@ -242,7 +242,7 @@ export const getMyGames = (userid, url) => {
 export const testThunk = () => {
   return (dispatch) => {
     fetch(
-      'http://localhost:8888/ridtech/lotto/get-available-games.php?stateid=1&userid=2&gameid=1',
+      'http://localhost:8888/ridleytech/lottery/get-available-games.php?stateid=1&userid=2&gameid=1',
     )
       .then((response) => {
         return response.json();

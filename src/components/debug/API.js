@@ -9,7 +9,7 @@ class API extends Component {
   }
 
   componentDidMount() {
-    // var localPath = 'http://localhost:8888/ridtech/lotto/';
+    // var localPath = 'http://localhost:8888/ridleytech/lottery/';
     // this.getAvailableGames(1, localPath).then((data) => {
     //   //console.log('results: ' + data);
     //   console.log('results: ' + JSON.stringify(data));
@@ -22,7 +22,7 @@ class API extends Component {
 
   getAvailableGames = (stateid, userid) => {
     var urlStr =
-      'http://localhost:8888/ridtech/lotto/' +
+      'http://localhost:8888/ridleytech/lottery/' +
       'get-available-games.php?userid=' +
       userid +
       '&stateid=' +

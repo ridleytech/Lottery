@@ -119,12 +119,7 @@ class SignIn extends Component<Props> {
 
     return (
       //console.log('user: ' + props.user);
-      <View
-        style={{
-          flex: 1,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}>
+      <View style={styles.content}>
         <Text style={styles.header}>Your Mobile Number</Text>
         <Text style={styles.subHeader}>
           To ensure security of your account, we will send the verification to
@@ -200,6 +195,12 @@ export default connect(mapStateToProps, {
 })(SignIn);
 
 const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: 20,
+  },
   submitBtn: {
     fontFamily: 'HelveticaNeue-Medium',
     fontSize: 18,
