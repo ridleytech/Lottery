@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet, Alert} from 'react-native';
+import {Text, View, Image, StyleSheet, Alert, Platform} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
 import {authUser} from '../../thunks';
@@ -174,11 +174,61 @@ class SignIn extends Component<Props> {
           ) : null}
         </View>
 
-        <TouchableOpacity style={styles.loginBtn} onPress={this.authUserDebug}>
+        {/* shadowColor: '#000',
+    shadowOffset: {width: 0, height: 6},
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 1,
+    backgroundColor: '#0000', */}
+
+        <View
+          style={{
+            fontFamily:
+              Platform.OS === 'ios'
+                ? 'HelveticaNeue-Medium'
+                : 'HelveticaNeue-Medium-11',
+            fontSize: 18,
+            color: 'white',
+            textAlign: 'center',
+            backgroundColor: 'rgb(255,114,0)',
+            height: 45,
+            alignItems: 'center',
+            padding: 8,
+            marginTop: 20,
+            // borderWidth: 2,
+            // borderStyle: 'solid',
+            // borderColor: 'rgb(255,114,0)',
+            shadowColor: '#000',
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0, height: 6},
+            shadowRadius: 9,
+            elevation: 1,
+            borderRadius: 6,
+          }}>
+          <TouchableOpacity onPress={this.authUserDebug}>
+            <Text style={styles.submitBtn2}>SKIP LOGIN (for testing)</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* <View
+          style={{
+            width: 56,
+            height: 56,
+            borderRadius: 28,
+            marginBottom: 3,
+            shadowColor: '#000',
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0, height: 6},
+            shadowRadius: 4,
+            elevation: 1,
+            backgroundColor: 'white',
+          }}></View> */}
+
+        {/* <TouchableOpacity style={styles.loginBtn} onPress={this.authUserDebug}>
           <Text style={[styles.submitBtn, {marginTop: 30}]}>
             SKIP LOGIN (for testing)
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }
@@ -202,28 +252,50 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   submitBtn: {
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
     fontSize: 18,
     color: 'white',
     textAlign: 'center',
     backgroundColor: 'rgb(255,114,0)',
     height: 45,
-    borderRadius: 6,
-    overflow: 'hidden',
+    //borderRadius: 6,
+    //overflow: 'hidden',
     alignItems: 'center',
     padding: 10,
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'rgb(255,114,0)',
   },
+  submitBtn2: {
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+    backgroundColor: 'rgb(255,114,0)',
+    //borderRadius: 6,
+    //overflow: 'hidden',
+    alignItems: 'center',
+  },
   loginBtn: {
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 6},
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    elevation: 1,
+    // shadowColor: '#000',
+    // shadowOpacity: 0.2,
+    // shadowOffset: {width: 0, height: 6},
+    // shadowRadius: 4,
+    elevation: 1,
+    backgroundColor: 'white',
   },
   enabled: {
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
     fontSize: 15,
     color: 'white',
     textAlign: 'center',
@@ -236,7 +308,10 @@ const styles = StyleSheet.create({
     width: 190,
   },
   disabled: {
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
     fontSize: 15,
     color: 'white',
     textAlign: 'center',
@@ -251,7 +326,8 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 85,
     marginBottom: 20,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     fontSize: 21,
     color: 'rgb(62,28,74)',
   },

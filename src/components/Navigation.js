@@ -31,7 +31,7 @@ const menuBtn = (props) => {
 };
 
 const BackBtn = (props, screen) => {
-  console.log('BackBtn');
+  //console.log('BackBtn');
   return (
     <View style={{marginLeft: 17, marginBottom: -13}}>
       <TouchableOpacity onPress={() => props.navigation.navigate(screen)}>
@@ -54,7 +54,10 @@ const GameStackScreen = (props) => (
         drawerLabel: 'Available Games',
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'HelveticaNeue-Medium',
+          fontFamily:
+            Platform.OS === 'ios'
+              ? 'HelveticaNeue-Medium'
+              : 'HelveticaNeue-Medium-11',
           fontSize: 21,
           letterSpacing: 0.93,
           marginBottom: -13,
@@ -74,7 +77,10 @@ const GameStackScreen = (props) => (
         headerTitle: `Numbers List`,
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'HelveticaNeue-Medium',
+          fontFamily:
+            Platform.OS === 'ios'
+              ? 'HelveticaNeue-Medium'
+              : 'HelveticaNeue-Medium-11',
           fontSize: 21,
           letterSpacing: 0.93,
           marginBottom: -13,
@@ -103,7 +109,10 @@ const MyGamesStackScreen = (props) => (
         drawerLabel: 'Joined Games',
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'HelveticaNeue-Medium',
+          fontFamily:
+            Platform.OS === 'ios'
+              ? 'HelveticaNeue-Medium'
+              : 'HelveticaNeue-Medium-11',
           fontSize: 21,
           letterSpacing: 0.93,
           marginBottom: -13,
@@ -122,7 +131,10 @@ const MyGamesStackScreen = (props) => (
         headerTitle: `Numbers List`,
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'HelveticaNeue-Medium',
+          fontFamily:
+            Platform.OS === 'ios'
+              ? 'HelveticaNeue-Medium'
+              : 'HelveticaNeue-Medium-11',
           fontSize: 21,
           letterSpacing: 0.93,
           marginBottom: -13,
@@ -180,7 +192,10 @@ const AuthStackScreen = (props) => {
           headerTitle: ``,
           headerTitleStyle: {
             color: 'white',
-            fontFamily: 'HelveticaNeue-Medium',
+            fontFamily:
+              Platform.OS === 'ios'
+                ? 'HelveticaNeue-Medium'
+                : 'HelveticaNeue-Medium-11',
             fontSize: 21,
             letterSpacing: 0.93,
             marginBottom: -13,

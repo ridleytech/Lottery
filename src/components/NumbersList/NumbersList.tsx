@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  Platform,
 } from 'react-native';
 import {Text, ListItem, Left, Body, Right, Title} from 'native-base';
 import {connect} from 'react-redux';
@@ -506,43 +507,9 @@ class NumbersList extends Component<Props> {
             renderItem={(item) => (
               <NumbersItem item={item} selectItem={this.selectItem} />
             )}
-            //onScroll={this.handleScroll.bind(this)}
-            //onRefresh={this.handleRefresh()}
-            //onEndReached={() => this.showNexPage()}
             //key={(item) => item.gamerowid}
             keyExtractor={(item, index) => index.toString()}
-            //onEndReachedThreshold={2}
-
-            // refreshControl={
-            //   <RefreshControl
-            //     refreshing={this.state.refreshing}
-            //     onRefresh={this._onRefresh}
-            //   />
-            // }
-
-            // ListHeaderComponent={
-            //   this.state.currentCombosPage > 0 &&
-            //   this.props.refreshing == 'top' ? (
-            //     <ActivityIndicator size="small" />
-            //   ) : null
-            // }
-            // ListFooterComponent={
-            //   this.props.refreshing == 'bottom' ? (
-            //     <ActivityIndicator size="small" />
-            //   ) : null
-            // }
           />
-
-          {/* <Animated.View style={styles.pagingView}>
-            <TouchableOpacity>
-              <Text style={{marginRight: 20}}>Previous</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Next</Text>
-            </TouchableOpacity>
-          </Animated.View> */}
-
-          {/* <PagingView bgC={'gray'} /> */}
         </View>
       </>
     );
@@ -614,7 +581,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 3,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   playedDisabled: {
@@ -629,7 +596,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 3,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   quickAddDisabled: {
@@ -642,7 +609,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 5,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   quickAdd: {
@@ -655,7 +622,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 5,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   top2: {
@@ -666,11 +633,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     // backgroundColor: 'green',
     color: 'rgb(151, 151, 151)',
-    fontFamily: 'Avenir-Oblique',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Oblique' : 'Avenir-Oblique-11',
     fontSize: 14,
   },
   numberCell: {
-    fontFamily: 'ArialRoundedMTBold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'Arial Rounded MT Bold' : 'Arial-Rounded-Bold',
     fontSize: 18,
     color: 'rgb(255,114,0)',
     width: 32,
@@ -681,18 +649,21 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     overflow: 'hidden',
   },
-  numberShadow: {
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 3},
-    shadowOpacity: 0.3,
-    shadowRadius: 2.5,
-  },
+  // numberShadow: {
+  //   shadowColor: '#000',
+  //   shadowOffset: {width: 0, height: 3},
+  //   shadowOpacity: 0.3,
+  //   shadowRadius: 2.5,
+  // },
   selectIcon: {width: 38, height: 38},
   topHeader: {
     fontSize: 12,
     color: 'rgb(62, 28, 74)',
     letterSpacing: 3,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
     marginBottom: 5,
   },
 
@@ -773,7 +744,8 @@ const styles = StyleSheet.create({
     width: 70,
     borderRadius: 10,
     marginTop: 10,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     fontSize: 9,
     height: 20,
     paddingTop: 3,
@@ -787,7 +759,8 @@ const styles = StyleSheet.create({
     width: 70,
     borderRadius: 10,
     marginTop: 10,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     fontSize: 9,
     height: 20,
     paddingTop: 3,
@@ -803,7 +776,8 @@ const styles = StyleSheet.create({
     marginLeft: 0,
   },
   numbersCell: {
-    fontFamily: 'ArialRoundedMTBold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'Arial Rounded MT Bold' : 'Arial-Rounded-Bold',
     fontSize: 28,
     color: 'rgb(255,114,0)',
   },
@@ -824,18 +798,25 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: 'rgb(62,28,74)',
     marginTop: 14,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     letterSpacing: 3,
   },
   font9: {
-    fontFamily: 'HelveticaNeue-CondensedBold',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-CondensedBold'
+        : 'HelveticaNeue-CondensedBold-05',
     fontSize: 9,
     color: 'rgb(102,103,103)',
     letterSpacing: 0.3,
     lineHeight: 12,
   },
   gameLbl: {
-    fontFamily: 'HelveticaNeue-CondensedBold',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-CondensedBold'
+        : 'HelveticaNeue-CondensedBold-05',
     fontSize: 9,
     color: 'rgb(102,103,103)',
     marginTop: 5,

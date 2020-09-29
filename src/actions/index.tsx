@@ -15,35 +15,35 @@ export const logout = () => {
   };
 };
 
-export const clearField = (txt: string) => {
+export const clearField = (txt: string): any => {
   return {
     type: 'CLEAR_FIELD',
     txt: txt,
   };
 };
 
-export const selectGame = (game: any) => {
+export const selectGame = (game: any): any => {
   return {
     type: 'SELECTED_GAME',
     selectedGame: game,
   };
 };
 
-export const setRefreshing = (status: any) => {
+export const setRefreshing = (status: any): any => {
   return {
     type: 'SET_REFRESHING',
     status: status,
   };
 };
 
-export const updateScreen = (screen: number) => {
+export const updateScreen = (screen: number): any => {
   return {
     type: 'UPDATE_SCREEN',
     screen: screen,
   };
 };
 
-export const sortMyNumbers = (status) => {
+export const sortMyNumbers = (status: number): any => {
   //console.log('selectNumbers');
   return {
     type: 'SORT_MY_NUMBERS',
@@ -51,7 +51,7 @@ export const sortMyNumbers = (status) => {
   };
 };
 
-export const showPlayed = (value) => {
+export const showPlayed = (value: number): any => {
   console.log('showPlayed: ' + value);
 
   return {

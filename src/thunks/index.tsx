@@ -28,13 +28,13 @@ export const updateNumber = ({number, status, url}) => {
 
 export const manageNumbers = (
   numbers,
-  stateid,
-  gameid,
+  stateid: string,
+  gameid: string,
   timeofday,
-  userid,
+  userid: string,
   status,
-  quickAdd,
-  url,
+  quickAdd: string,
+  url: string,
 ) => {
   console.log(
     'numbers: ' +
@@ -109,7 +109,7 @@ export const manageGame = (item) => {
   };
 };
 
-export const authUser = (user, phone) => (dispatch, getState) => {
+export const authUser = (user: any, phone: string) => (dispatch, getState) => {
   console.log('authUser: ' + JSON.stringify(user) + 'phone: ' + phone);
 
   //return;
@@ -140,14 +140,14 @@ export const authUser = (user, phone) => (dispatch, getState) => {
 };
 
 export const getGameNumbers = (
-  sort,
-  gameid,
-  stateid,
-  userid,
-  url,
-  page,
-  currentMyNumbersPage,
-  screen,
+  sort: number,
+  gameid: string,
+  stateid: string,
+  userid: string,
+  url: string,
+  page: number,
+  currentMyNumbersPage: number,
+  screen: string,
 ) => {
   var urlStr =
     url +
@@ -178,7 +178,13 @@ export const getGameNumbers = (
   };
 };
 
-export const getUserNumbers = (userid, gameid, sort, url, page) => {
+export const getUserNumbers = (
+  userid: string,
+  gameid: string,
+  sort: number,
+  url: string,
+  page: number,
+) => {
   var urlStr =
     url +
     'get-user-numbers.php?gameid=' +
@@ -204,7 +210,11 @@ export const getUserNumbers = (userid, gameid, sort, url, page) => {
   };
 };
 
-export const getAvailableGames = (userid, stateid, url) => {
+export const getAvailableGames = (
+  userid: string,
+  stateid: string,
+  url: string,
+) => {
   var urlStr =
     url + 'get-available-games.php?userid=' + userid + '&stateid=' + stateid;
 
@@ -222,7 +232,7 @@ export const getAvailableGames = (userid, stateid, url) => {
   };
 };
 
-export const getMyGames = (userid, url) => {
+export const getMyGames = (userid: string, url: string) => {
   var urlStr = url + 'get-my-games.php?userid=' + userid;
 
   console.log('getMyGames: ' + urlStr);
@@ -239,25 +249,12 @@ export const getMyGames = (userid, url) => {
   };
 };
 
-export const testThunk = () => {
-  return (dispatch) => {
-    fetch(
-      'http://localhost:8888/ridleytech/lottery/get-available-games.php?stateid=1&userid=2&gameid=1',
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        console.log('test thunk response: ' + response);
-      })
-      .then((response) => {
-        dispatch({
-          type: c.GET_DATA,
-          data: 'Nothing',
-        });
-      })
-      .catch((error) => {
-        console.log('test thunk error: ' + error);
-      });
-  };
+export const testThunk = () => (dispatch, getState) => {
+  fetch('')
+    .then((response) => {
+      return response.json();
+    })
+    .then((payload) => {
+      dispatch({type: '', payload: payload});
+    });
 };

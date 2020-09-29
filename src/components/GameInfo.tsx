@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {
   View,
   Image,
@@ -6,46 +6,14 @@ import {
   Text,
   StyleSheet,
   Dimensions,
+  Platform,
 } from 'react-native';
-import Cash3 from '../images/cash3.png';
 import {render} from '@testing-library/react-native';
 
-function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
-  var flag = Cash3;
+import {Fonts} from '../utils/Fonts';
+import joinImg from '../images/joinImg.png';
 
-  // const [currentTime, setCurrentTime] = useState({time: ''});
-
-  // let seconds = minutes * 60;
-  // let totalTime = seconds * 100;
-  // var usedTime = 0;
-  // var startTime = +new Date();
-  // var timer = null;
-
-  // useEffect(() => {
-  //   //timer = setInterval(count, 10);
-
-  //   setCurrentTime({time: '00:00.00'});
-  // }, []);
-
-  // var count = function () {
-  //   usedTime = Math.floor((+new Date() - startTime) / 10);
-
-  //   var tt = totalTime - usedTime;
-  //   if (tt <= 0) {
-  //     setCurrentTime({time: '00:00.00'});
-
-  //     clearInterval(timer);
-  //   } else {
-  //     var mi = Math.floor(tt / (60 * 100));
-  //     var ss = Math.floor((tt - mi * 60 * 100) / 100);
-  //     var ms = tt - Math.floor(tt / 100) * 100;
-
-  //     setCurrentTime({
-  //       time: fillZero(mi) + ':' + fillZero(ss) + '.' + fillZero(ms),
-  //     });
-  //   }
-  // };
-
+function GameInfo({item, manageGame, url}) {
   var fillZero = function (num) {
     if (num === 0) {
       return '00';
@@ -53,20 +21,6 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
       return num < 10 ? '0' + num : num;
     }
   };
-
-  function timezoneShifter(date, timezone) {
-    let isBehindGTM = false;
-    if (timezone.startsWith('-')) {
-      timezone = timezone.substr(1);
-      isBehindGTM = true;
-    }
-
-    const [hDiff, mDiff] = timezone.split(':').map((t) => parseInt(t));
-    const diff = hDiff * 60 + mDiff * (isBehindGTM ? 1 : -1);
-    const currentDiff = new Date().getTimezoneOffset();
-
-    return new Date(date.valueOf() + (currentDiff - diff) * 60 * 1000);
-  }
 
   const calculateTimeLeft = () => {
     //let year = new Date().getFullYear();
@@ -89,13 +43,40 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  //const [year] = useState(new Date().getFullYear());
+  const [isActive, setIsActive] = useState(false);
+
+  useMemo(() => {
+    // componentWillMount events
+  }, []);
+  useEffect(() => {
+    setIsActive(true);
+
+    return () => {
+      // componentWillUnmount events
+      console.log('willunmount GameInfo');
+      setIsActive(false);
+    };
+  }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-  });
+    let interval = null;
+
+    if (isActive) {
+      interval = setInterval(() => {
+        setTimeLeft(calculateTimeLeft());
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+  }, [isActive]);
+
+  useEffect(
+    () => () => {
+      setIsActive(false);
+      console.log('unmount GameInfo');
+    },
+    [],
+  );
 
   const timerComponents = [];
 
@@ -111,10 +92,12 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
 
   let image = url + '/images/lottery/' + item.image;
 
-  const _now = new Date();
-
   return (
     <View style={styles.container2}>
+      {item.joined == '1' ? (
+        <Image source={joinImg} style={styles.joinStatusImg} />
+      ) : null}
+
       <View style={styles.view1}>
         <Image
           source={{
@@ -159,7 +142,7 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
                 {fillZero(timerComponents[2])}
               </Text>
             ) : (
-              <Text>Time's up!</Text>
+              <Text>Drawing started!</Text>
             )}
             {/* <Text>{timezoneShifter(_now, '-04:00').toLocaleString()}</Text> */}
           </Text>
@@ -172,6 +155,7 @@ function GameInfo({item, manageGame, viewingNumbers, minutes, url}) {
 export default GameInfo;
 
 const styles = StyleSheet.create({
+  joinStatusImg: {width: 32, height: 32, left: 5, top: 5, position: 'absolute'},
   list: {marginBottom: 300},
   searchIcon: {width: 20, height: 20, marginLeft: -15},
   playedActive: {
@@ -186,7 +170,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 3,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   playedDisabled: {
@@ -201,7 +185,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 3,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   quickAdd: {
@@ -214,7 +198,7 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 5,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
   },
   top2: {
@@ -225,11 +209,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     // backgroundColor: 'green',
     color: 'rgb(151, 151, 151)',
-    fontFamily: 'Avenir-Oblique',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Oblique' : 'Avenir-Oblique-11',
     fontSize: 14,
   },
   numberCell: {
-    fontFamily: 'ArialRoundedMTBold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'Arial Rounded MT Bold' : 'Arial-Rounded-Bold',
     fontSize: 18,
     color: 'rgb(255,114,0)',
     width: 32,
@@ -251,7 +236,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'rgb(62, 28, 74)',
     letterSpacing: 3,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
+
     marginBottom: 5,
   },
 
@@ -332,7 +321,9 @@ const styles = StyleSheet.create({
     width: 70,
     borderRadius: 10,
     marginTop: 10,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
+
     fontSize: 9,
     height: 20,
     paddingTop: 3,
@@ -346,7 +337,9 @@ const styles = StyleSheet.create({
     width: 70,
     borderRadius: 10,
     marginTop: 10,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
+
     fontSize: 9,
     height: 20,
     paddingTop: 3,
@@ -362,7 +355,8 @@ const styles = StyleSheet.create({
     marginLeft: 0,
   },
   numbersCell: {
-    fontFamily: 'ArialRoundedMTBold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'Arial Rounded MT Bold' : 'Arial-Rounded-Bold',
     fontSize: 28,
     color: 'rgb(255,114,0)',
   },
@@ -376,7 +370,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: 'rgb(62,28,74)',
     marginTop: 14,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: Platform.OS === 'ios' ? 'HelveticaNeue' : 'HelveticaNeue-01',
     letterSpacing: 0.3,
     //backgroundColor: 'red',
     minWidth: 140,
@@ -385,18 +379,25 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: 'rgb(62,28,74)',
     marginTop: 14,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     letterSpacing: 3,
   },
   font9: {
-    fontFamily: 'HelveticaNeue-CondensedBold',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-CondensedBold'
+        : 'HelveticaNeue-CondensedBold-05',
     fontSize: 9,
     color: 'rgb(102,103,103)',
     letterSpacing: 0.3,
     lineHeight: 12,
   },
   gameLbl: {
-    fontFamily: 'HelveticaNeue-CondensedBold',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-CondensedBold'
+        : 'HelveticaNeue-CondensedBold-05',
     fontSize: 9,
     color: 'rgb(102,103,103)',
     marginTop: 5,

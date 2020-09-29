@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {CurrentRenderContext} from '@react-navigation/native';
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 //https://medium.com/@Daniel.Merrill/build-a-custom-tab-bar-with-a-menu-button-in-react-navigation-in-20-minutes-f7d721551ef
 //https://reactnavigation.org/docs/bottom-tab-navigator/
 
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     color: 'rgb(62,28,74)',
     textAlign: 'center',
     fontSize: 12,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily:
+      Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeue-Bold-02',
     letterSpacing: 0.38,
     marginBottom: 1,
   },
@@ -68,7 +69,10 @@ const styles = StyleSheet.create({
     color: 'rgb(151,151,151)',
     textAlign: 'center',
     fontSize: 12,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily:
+      Platform.OS === 'ios'
+        ? 'HelveticaNeue-Medium'
+        : 'HelveticaNeue-Medium-11',
     letterSpacing: 0.38,
     marginBottom: 1,
   },

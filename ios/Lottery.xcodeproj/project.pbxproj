@@ -8,19 +8,65 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* LotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LotteryTests.m */; };
+		02E04F1B62CE4124B9E38358 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D1452B089EB4AA294723C23 /* MaterialIcons.ttf */; };
+		0F6923C8888F497EAAA5ABC1 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB40D508658B412CB8017D04 /* Ionicons.ttf */; };
 		10C0CFA224E9BA5B000DC9B9 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0CFA124E9BA5B000DC9B9 /* AppCenter-Config.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1B70CA33256E89B45AC20AC1 /* libPods-Lottery-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE88D1429292D2AD34E5A8A5 /* libPods-Lottery-tvOSTests.a */; };
+		1BFE39A7D5A94AD692AD2872 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AF7ABC46E224D76B5862811 /* Roboto.ttf */; };
+		1D3E0B73FDBD413EA2CF0B9F /* HelveticaNeue-Italic-03.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913404BB52C24AB685B1B3F1 /* HelveticaNeue-Italic-03.ttf */; };
 		1F7223128C4E2C5172DEFF1D /* libPods-Lottery-LotteryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EE5FBE833825853091F727 /* libPods-Lottery-LotteryTests.a */; };
+		1F771DABEEAC48A0BB8D1A25 /* Avenir-LightOblique-08.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F486778ECE87409FB6343AE0 /* Avenir-LightOblique-08.ttf */; };
+		20F6B81274E446A9858FB51F /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 660C7A6BFF02461E9D81B205 /* Feather.ttf */; };
+		215EF93C35FE43228DB88DED /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F057CD3C86224EEE94115555 /* Entypo.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* LotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LotteryTests.m */; };
+		2EE9C1ACEB7542BF9D51917D /* HelveticaNeue-Bold-02.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31EC5B97C25B487E83363AC0 /* HelveticaNeue-Bold-02.ttf */; };
+		31ECB6651604474DA0A93161 /* Avenir-Roman-12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90B6F91278D747EFA1FFCC9D /* Avenir-Roman-12.ttf */; };
+		39B6E94877114087AE537E5B /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C56023D2E41456093B8092B /* Roboto_medium.ttf */; };
+		39CD406B033D486AB804D3EF /* Avenir-Light-07.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6710559C92E3454DBD119658 /* Avenir-Light-07.ttf */; };
+		3C75C1CA905F4AA3BE2BE615 /* HelveticaNeue-Medium-11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBC2706FA68C4DE2995F9CF9 /* HelveticaNeue-Medium-11.ttf */; };
+		414561F4A1AE4979A34CE809 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C20B173850D497DAA9393EE /* EvilIcons.ttf */; };
+		452E9DF606CD467A89654D45 /* HelveticaNeue-LightItalic-09.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A35CB2D94C045788B13ACF2 /* HelveticaNeue-LightItalic-09.ttf */; };
 		4BBC4877E1ED1611CC2702D4 /* libPods-Lottery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E319A9CF536C8A8F5934CA78 /* libPods-Lottery.a */; };
+		4FFC2E6A0D434F42B3728A57 /* HelveticaNeue-01.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B23CDD9BC864A47A943A8C4 /* HelveticaNeue-01.ttf */; };
+		53BD64B208F94BEF8FB2A557 /* Avenir-Book-01.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0173F49D5A914B949AAB0BEA /* Avenir-Book-01.ttf */; };
+		53E559CF79514ED0A80C80C8 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 135EC29287F340038823FDF7 /* Octicons.ttf */; };
+		6064C3E1C0F2494690299353 /* Arial-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56ED3DFDECA544B1A2181E76 /* Arial-Rounded-Bold.ttf */; };
+		6ACDE21B44E14B1C9D55F3BD /* Avenir-Black-03.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5F7A4BA9BFB41F4AECD6356 /* Avenir-Black-03.ttf */; };
+		77CA97F3B1D04FAFAD8BC523 /* HelveticaNeue-BoldItalic-04.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1389386481634B17AFF61508 /* HelveticaNeue-BoldItalic-04.ttf */; };
+		7EA44556E17B47889505BE65 /* Avenir-Heavy-05.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B935C9391394AC0AA196986 /* Avenir-Heavy-05.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		843ADA1A1EBB4CE9A0B71025 /* HelveticaNeue-UltraLight-06.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EDD87FBCE74A14ADDE58AD /* HelveticaNeue-UltraLight-06.ttf */; };
+		94493DA0D9E94643B566ECC7 /* HelveticaNeue-MediumItalic-12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA3EAE88425C4B90887A5469 /* HelveticaNeue-MediumItalic-12.ttf */; };
+		9CC0039281DB45EDA3E62750 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 478CA375CE92496CA058CEBB /* FontAwesome.ttf */; };
+		A096AA5AF5844FE095FE3199 /* Avenir-BlackOblique-04.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFC626778FB04E01B259AB21 /* Avenir-BlackOblique-04.ttf */; };
+		A15F6F11BBB2406DAE91998A /* Avenir-Oblique-11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2ACB4EC06E54869AE4D7E8E /* Avenir-Oblique-11.ttf */; };
+		A4812E9612904D179157D5B9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0626C422250F47BD83D958FB /* Zocial.ttf */; };
+		AB4CFCCCF8C4481BBB4291D6 /* HelveticaNeue-UltraLightItalic-07.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFBB3945B26C409E945344F3 /* HelveticaNeue-UltraLightItalic-07.ttf */; };
+		AC027E9D718D4767ADBBC3C5 /* Avenir-MediumOblique-10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D487374C1A2E4677A016698E /* Avenir-MediumOblique-10.ttf */; };
+		ACF9A34E6DDE4F3EAEB7E18D /* HelveticaNeue-Thin-13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 833BF19F95244E1CA8BF9159 /* HelveticaNeue-Thin-13.ttf */; };
+		AE5ADA10A10B4C82ABF89553 /* HelveticaNeue-ThinItalic-14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F77DD94720A49FB874A105D /* HelveticaNeue-ThinItalic-14.ttf */; };
+		B208F4506FC645DEB4691099 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A10CA622F804BE99B52EF19 /* FontAwesome5_Solid.ttf */; };
+		B43ABBEDBA89415491244C23 /* HelveticaNeue-Light-08.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A6D4E9500D493C87081087 /* HelveticaNeue-Light-08.ttf */; };
+		B45490B862C142DE842B74C6 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1463F01DDD0947B39C557AC7 /* Fontisto.ttf */; };
+		B78827448DB646CDABC506DF /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0854D21389264AB48B8FC349 /* FontAwesome5_Brands.ttf */; };
+		B89AEE962B814159B5680A50 /* HelveticaNeue-CondensedBlack-10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36038A0C6F53414CA47701FB /* HelveticaNeue-CondensedBlack-10.ttf */; };
+		C7EAE5533C7848EF9537EC30 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B5E6007EAC4443D982C1DD4 /* MaterialCommunityIcons.ttf */; };
+		D19191D6DBA24AD6BF087E62 /* HelveticaNeue-CondensedBold-05.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60E84AF470484954ADED08E9 /* HelveticaNeue-CondensedBold-05.ttf */; };
+		D1D8BC2081CE485E85D26E81 /* Avenir-BookOblique-02.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CD6974742144321A6886AD5 /* Avenir-BookOblique-02.ttf */; };
+		E15ECDECB48948DA9D3A7071 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 699ABCD856D8438D8E5B5F13 /* Foundation.ttf */; };
+		E17E63A0F98342DC902E3159 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EACDB88A03514B5E8DB5F63C /* SimpleLineIcons.ttf */; };
+		E65A0AE049BB426AA68DEB3B /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F4BC8A4DCFA4244AA3BA54A /* AntDesign.ttf */; };
+		E70E55EE420A4441887D303F /* Avenir-HeavyOblique-06.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F912605752644C52912E0CE0 /* Avenir-HeavyOblique-06.ttf */; };
+		F238352B9372498E8CDE056C /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF96C56D6CC742DBAD5976B7 /* FontAwesome5_Regular.ttf */; };
+		F59FAAF3856C46E3879C96CC /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C48F94FF60A491691497089 /* rubicon-icon-font.ttf */; };
 		FDC567D2986969C19ECDD390 /* libPods-Lottery-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F69E565B27DA945CBDB4CE0E /* libPods-Lottery-tvOS.a */; };
+		FE5BAB56027745BFA9D3209E /* Avenir-Medium-09.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DB6659BB3A34511AA1CD7D3 /* Avenir-Medium-09.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,30 +91,77 @@
 		00E356EE1AD99517003FC87E /* LotteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LotteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* LotteryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotteryTests.m; sourceTree = "<group>"; };
+		0173F49D5A914B949AAB0BEA /* Avenir-Book-01.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Book-01.ttf"; path = "../assets/fonts/Avenir-Book-01.ttf"; sourceTree = "<group>"; };
 		041FB708D1FB7F243BCF20B8 /* Pods-Lottery-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Lottery-tvOSTests/Pods-Lottery-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		0626C422250F47BD83D958FB /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		0854D21389264AB48B8FC349 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		0A10CA622F804BE99B52EF19 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		0C20B173850D497DAA9393EE /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		10C0CFA124E9BA5B000DC9B9 /* AppCenter-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "Lottery/AppCenter-Config.plist"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		135EC29287F340038823FDF7 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		1389386481634B17AFF61508 /* HelveticaNeue-BoldItalic-04.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-BoldItalic-04.ttf"; path = "../assets/fonts/HelveticaNeue-BoldItalic-04.ttf"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Lottery Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lottery Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Lottery/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Lottery/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Lottery/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Lottery/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Lottery/main.m; sourceTree = "<group>"; };
+		1463F01DDD0947B39C557AC7 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		1AF7ABC46E224D76B5862811 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		1B91CAE3E9458668E001D1EA /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
+		1B935C9391394AC0AA196986 /* Avenir-Heavy-05.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Heavy-05.ttf"; path = "../assets/fonts/Avenir-Heavy-05.ttf"; sourceTree = "<group>"; };
+		2B5E6007EAC4443D982C1DD4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Lottery-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lottery-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Lottery-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lottery-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F77DD94720A49FB874A105D /* HelveticaNeue-ThinItalic-14.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-ThinItalic-14.ttf"; path = "../assets/fonts/HelveticaNeue-ThinItalic-14.ttf"; sourceTree = "<group>"; };
+		31EC5B97C25B487E83363AC0 /* HelveticaNeue-Bold-02.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-Bold-02.ttf"; path = "../assets/fonts/HelveticaNeue-Bold-02.ttf"; sourceTree = "<group>"; };
+		36038A0C6F53414CA47701FB /* HelveticaNeue-CondensedBlack-10.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-CondensedBlack-10.ttf"; path = "../assets/fonts/HelveticaNeue-CondensedBlack-10.ttf"; sourceTree = "<group>"; };
 		3EA14EDEAFF1DBADBC53CEE9 /* Pods-Lottery-LotteryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-LotteryTests.release.xcconfig"; path = "Target Support Files/Pods-Lottery-LotteryTests/Pods-Lottery-LotteryTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F2ABF6225236E7700EDD70C /* HelveticaNeue.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaNeue.ttc; sourceTree = "<group>"; };
+		478CA375CE92496CA058CEBB /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		4D1452B089EB4AA294723C23 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		56ED3DFDECA544B1A2181E76 /* Arial-Rounded-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial-Rounded-Bold.ttf"; path = "../assets/fonts/Arial-Rounded-Bold.ttf"; sourceTree = "<group>"; };
+		5CD6974742144321A6886AD5 /* Avenir-BookOblique-02.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-BookOblique-02.ttf"; path = "../assets/fonts/Avenir-BookOblique-02.ttf"; sourceTree = "<group>"; };
+		5F4BC8A4DCFA4244AA3BA54A /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		60E84AF470484954ADED08E9 /* HelveticaNeue-CondensedBold-05.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-CondensedBold-05.ttf"; path = "../assets/fonts/HelveticaNeue-CondensedBold-05.ttf"; sourceTree = "<group>"; };
 		644EBE21B84E1C11EB574169 /* Pods-Lottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.debug.xcconfig"; path = "Target Support Files/Pods-Lottery/Pods-Lottery.debug.xcconfig"; sourceTree = "<group>"; };
+		660C7A6BFF02461E9D81B205 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		6710559C92E3454DBD119658 /* Avenir-Light-07.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Light-07.ttf"; path = "../assets/fonts/Avenir-Light-07.ttf"; sourceTree = "<group>"; };
 		698AF1850DB6609A8D538912 /* Pods-Lottery-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Lottery-tvOS/Pods-Lottery-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		699ABCD856D8438D8E5B5F13 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		6A35CB2D94C045788B13ACF2 /* HelveticaNeue-LightItalic-09.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-LightItalic-09.ttf"; path = "../assets/fonts/HelveticaNeue-LightItalic-09.ttf"; sourceTree = "<group>"; };
 		6AEBBB969265F58CA4C34E31 /* Pods-Lottery-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Lottery-tvOSTests/Pods-Lottery-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6DB6659BB3A34511AA1CD7D3 /* Avenir-Medium-09.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Medium-09.ttf"; path = "../assets/fonts/Avenir-Medium-09.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Lottery/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		833BF19F95244E1CA8BF9159 /* HelveticaNeue-Thin-13.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-Thin-13.ttf"; path = "../assets/fonts/HelveticaNeue-Thin-13.ttf"; sourceTree = "<group>"; };
+		8C48F94FF60A491691497089 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		90B6F91278D747EFA1FFCC9D /* Avenir-Roman-12.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Roman-12.ttf"; path = "../assets/fonts/Avenir-Roman-12.ttf"; sourceTree = "<group>"; };
+		913404BB52C24AB685B1B3F1 /* HelveticaNeue-Italic-03.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-Italic-03.ttf"; path = "../assets/fonts/HelveticaNeue-Italic-03.ttf"; sourceTree = "<group>"; };
+		9B23CDD9BC864A47A943A8C4 /* HelveticaNeue-01.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-01.ttf"; path = "../assets/fonts/HelveticaNeue-01.ttf"; sourceTree = "<group>"; };
+		9C56023D2E41456093B8092B /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
+		B2ACB4EC06E54869AE4D7E8E /* Avenir-Oblique-11.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Oblique-11.ttf"; path = "../assets/fonts/Avenir-Oblique-11.ttf"; sourceTree = "<group>"; };
+		BB40D508658B412CB8017D04 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		C4A6D4E9500D493C87081087 /* HelveticaNeue-Light-08.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-Light-08.ttf"; path = "../assets/fonts/HelveticaNeue-Light-08.ttf"; sourceTree = "<group>"; };
+		D3EDD87FBCE74A14ADDE58AD /* HelveticaNeue-UltraLight-06.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-UltraLight-06.ttf"; path = "../assets/fonts/HelveticaNeue-UltraLight-06.ttf"; sourceTree = "<group>"; };
+		D487374C1A2E4677A016698E /* Avenir-MediumOblique-10.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-MediumOblique-10.ttf"; path = "../assets/fonts/Avenir-MediumOblique-10.ttf"; sourceTree = "<group>"; };
 		D7EE5FBE833825853091F727 /* libPods-Lottery-LotteryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lottery-LotteryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFBB3945B26C409E945344F3 /* HelveticaNeue-UltraLightItalic-07.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-UltraLightItalic-07.ttf"; path = "../assets/fonts/HelveticaNeue-UltraLightItalic-07.ttf"; sourceTree = "<group>"; };
 		E319A9CF536C8A8F5934CA78 /* libPods-Lottery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lottery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61A46C5985B9657495CFCE1 /* Pods-Lottery-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Lottery-tvOS/Pods-Lottery-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		EA3EAE88425C4B90887A5469 /* HelveticaNeue-MediumItalic-12.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-MediumItalic-12.ttf"; path = "../assets/fonts/HelveticaNeue-MediumItalic-12.ttf"; sourceTree = "<group>"; };
+		EACDB88A03514B5E8DB5F63C /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		EBC2706FA68C4DE2995F9CF9 /* HelveticaNeue-Medium-11.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue-Medium-11.ttf"; path = "../assets/fonts/HelveticaNeue-Medium-11.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EE88D1429292D2AD34E5A8A5 /* libPods-Lottery-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lottery-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFC626778FB04E01B259AB21 /* Avenir-BlackOblique-04.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-BlackOblique-04.ttf"; path = "../assets/fonts/Avenir-BlackOblique-04.ttf"; sourceTree = "<group>"; };
+		F057CD3C86224EEE94115555 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		F486778ECE87409FB6343AE0 /* Avenir-LightOblique-08.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-LightOblique-08.ttf"; path = "../assets/fonts/Avenir-LightOblique-08.ttf"; sourceTree = "<group>"; };
+		F5F7A4BA9BFB41F4AECD6356 /* Avenir-Black-03.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-Black-03.ttf"; path = "../assets/fonts/Avenir-Black-03.ttf"; sourceTree = "<group>"; };
 		F69E565B27DA945CBDB4CE0E /* libPods-Lottery-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lottery-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F912605752644C52912E0CE0 /* Avenir-HeavyOblique-06.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Avenir-HeavyOblique-06.ttf"; path = "../assets/fonts/Avenir-HeavyOblique-06.ttf"; sourceTree = "<group>"; };
 		FD44F43D0999FD98D8B328D7 /* Pods-Lottery-LotteryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery-LotteryTests.debug.xcconfig"; path = "Target Support Files/Pods-Lottery-LotteryTests/Pods-Lottery-LotteryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF96C56D6CC742DBAD5976B7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +261,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				84EFE3258B3EA2BB0DD148C5 /* Pods */,
+				F3E46624B6D8415A94F9D4C2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -177,7 +271,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Lottery.app */,
+				13B07F961A680F5B00A75B9A /* Lottery Club.app */,
 				00E356EE1AD99517003FC87E /* LotteryTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Lottery-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Lottery-tvOSTests.xctest */,
@@ -198,6 +292,60 @@
 				041FB708D1FB7F243BCF20B8 /* Pods-Lottery-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F3E46624B6D8415A94F9D4C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F4BC8A4DCFA4244AA3BA54A /* AntDesign.ttf */,
+				F057CD3C86224EEE94115555 /* Entypo.ttf */,
+				0C20B173850D497DAA9393EE /* EvilIcons.ttf */,
+				660C7A6BFF02461E9D81B205 /* Feather.ttf */,
+				478CA375CE92496CA058CEBB /* FontAwesome.ttf */,
+				0854D21389264AB48B8FC349 /* FontAwesome5_Brands.ttf */,
+				FF96C56D6CC742DBAD5976B7 /* FontAwesome5_Regular.ttf */,
+				0A10CA622F804BE99B52EF19 /* FontAwesome5_Solid.ttf */,
+				1463F01DDD0947B39C557AC7 /* Fontisto.ttf */,
+				699ABCD856D8438D8E5B5F13 /* Foundation.ttf */,
+				BB40D508658B412CB8017D04 /* Ionicons.ttf */,
+				2B5E6007EAC4443D982C1DD4 /* MaterialCommunityIcons.ttf */,
+				4D1452B089EB4AA294723C23 /* MaterialIcons.ttf */,
+				3F2ABF6225236E7700EDD70C /* HelveticaNeue.ttc */,
+				135EC29287F340038823FDF7 /* Octicons.ttf */,
+				9C56023D2E41456093B8092B /* Roboto_medium.ttf */,
+				1AF7ABC46E224D76B5862811 /* Roboto.ttf */,
+				8C48F94FF60A491691497089 /* rubicon-icon-font.ttf */,
+				EACDB88A03514B5E8DB5F63C /* SimpleLineIcons.ttf */,
+				0626C422250F47BD83D958FB /* Zocial.ttf */,
+				9B23CDD9BC864A47A943A8C4 /* HelveticaNeue-01.ttf */,
+				31EC5B97C25B487E83363AC0 /* HelveticaNeue-Bold-02.ttf */,
+				1389386481634B17AFF61508 /* HelveticaNeue-BoldItalic-04.ttf */,
+				36038A0C6F53414CA47701FB /* HelveticaNeue-CondensedBlack-10.ttf */,
+				60E84AF470484954ADED08E9 /* HelveticaNeue-CondensedBold-05.ttf */,
+				913404BB52C24AB685B1B3F1 /* HelveticaNeue-Italic-03.ttf */,
+				C4A6D4E9500D493C87081087 /* HelveticaNeue-Light-08.ttf */,
+				6A35CB2D94C045788B13ACF2 /* HelveticaNeue-LightItalic-09.ttf */,
+				EBC2706FA68C4DE2995F9CF9 /* HelveticaNeue-Medium-11.ttf */,
+				EA3EAE88425C4B90887A5469 /* HelveticaNeue-MediumItalic-12.ttf */,
+				833BF19F95244E1CA8BF9159 /* HelveticaNeue-Thin-13.ttf */,
+				2F77DD94720A49FB874A105D /* HelveticaNeue-ThinItalic-14.ttf */,
+				D3EDD87FBCE74A14ADDE58AD /* HelveticaNeue-UltraLight-06.ttf */,
+				DFBB3945B26C409E945344F3 /* HelveticaNeue-UltraLightItalic-07.ttf */,
+				56ED3DFDECA544B1A2181E76 /* Arial-Rounded-Bold.ttf */,
+				F5F7A4BA9BFB41F4AECD6356 /* Avenir-Black-03.ttf */,
+				EFC626778FB04E01B259AB21 /* Avenir-BlackOblique-04.ttf */,
+				0173F49D5A914B949AAB0BEA /* Avenir-Book-01.ttf */,
+				5CD6974742144321A6886AD5 /* Avenir-BookOblique-02.ttf */,
+				1B935C9391394AC0AA196986 /* Avenir-Heavy-05.ttf */,
+				F912605752644C52912E0CE0 /* Avenir-HeavyOblique-06.ttf */,
+				6710559C92E3454DBD119658 /* Avenir-Light-07.ttf */,
+				F486778ECE87409FB6343AE0 /* Avenir-LightOblique-08.ttf */,
+				6DB6659BB3A34511AA1CD7D3 /* Avenir-Medium-09.ttf */,
+				D487374C1A2E4677A016698E /* Avenir-MediumOblique-10.ttf */,
+				B2ACB4EC06E54869AE4D7E8E /* Avenir-Oblique-11.ttf */,
+				90B6F91278D747EFA1FFCC9D /* Avenir-Roman-12.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +389,7 @@
 			);
 			name = Lottery;
 			productName = Lottery;
-			productReference = 13B07F961A680F5B00A75B9A /* Lottery.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Lottery Club.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* Lottery-tvOS */ = {
@@ -346,6 +494,52 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				10C0CFA224E9BA5B000DC9B9 /* AppCenter-Config.plist in Resources */,
+				E65A0AE049BB426AA68DEB3B /* AntDesign.ttf in Resources */,
+				215EF93C35FE43228DB88DED /* Entypo.ttf in Resources */,
+				414561F4A1AE4979A34CE809 /* EvilIcons.ttf in Resources */,
+				20F6B81274E446A9858FB51F /* Feather.ttf in Resources */,
+				9CC0039281DB45EDA3E62750 /* FontAwesome.ttf in Resources */,
+				B78827448DB646CDABC506DF /* FontAwesome5_Brands.ttf in Resources */,
+				F238352B9372498E8CDE056C /* FontAwesome5_Regular.ttf in Resources */,
+				B208F4506FC645DEB4691099 /* FontAwesome5_Solid.ttf in Resources */,
+				B45490B862C142DE842B74C6 /* Fontisto.ttf in Resources */,
+				E15ECDECB48948DA9D3A7071 /* Foundation.ttf in Resources */,
+				0F6923C8888F497EAAA5ABC1 /* Ionicons.ttf in Resources */,
+				C7EAE5533C7848EF9537EC30 /* MaterialCommunityIcons.ttf in Resources */,
+				02E04F1B62CE4124B9E38358 /* MaterialIcons.ttf in Resources */,
+				53E559CF79514ED0A80C80C8 /* Octicons.ttf in Resources */,
+				39B6E94877114087AE537E5B /* Roboto_medium.ttf in Resources */,
+				1BFE39A7D5A94AD692AD2872 /* Roboto.ttf in Resources */,
+				F59FAAF3856C46E3879C96CC /* rubicon-icon-font.ttf in Resources */,
+				E17E63A0F98342DC902E3159 /* SimpleLineIcons.ttf in Resources */,
+				A4812E9612904D179157D5B9 /* Zocial.ttf in Resources */,
+				4FFC2E6A0D434F42B3728A57 /* HelveticaNeue-01.ttf in Resources */,
+				2EE9C1ACEB7542BF9D51917D /* HelveticaNeue-Bold-02.ttf in Resources */,
+				77CA97F3B1D04FAFAD8BC523 /* HelveticaNeue-BoldItalic-04.ttf in Resources */,
+				B89AEE962B814159B5680A50 /* HelveticaNeue-CondensedBlack-10.ttf in Resources */,
+				D19191D6DBA24AD6BF087E62 /* HelveticaNeue-CondensedBold-05.ttf in Resources */,
+				1D3E0B73FDBD413EA2CF0B9F /* HelveticaNeue-Italic-03.ttf in Resources */,
+				B43ABBEDBA89415491244C23 /* HelveticaNeue-Light-08.ttf in Resources */,
+				452E9DF606CD467A89654D45 /* HelveticaNeue-LightItalic-09.ttf in Resources */,
+				3C75C1CA905F4AA3BE2BE615 /* HelveticaNeue-Medium-11.ttf in Resources */,
+				94493DA0D9E94643B566ECC7 /* HelveticaNeue-MediumItalic-12.ttf in Resources */,
+				ACF9A34E6DDE4F3EAEB7E18D /* HelveticaNeue-Thin-13.ttf in Resources */,
+				AE5ADA10A10B4C82ABF89553 /* HelveticaNeue-ThinItalic-14.ttf in Resources */,
+				843ADA1A1EBB4CE9A0B71025 /* HelveticaNeue-UltraLight-06.ttf in Resources */,
+				AB4CFCCCF8C4481BBB4291D6 /* HelveticaNeue-UltraLightItalic-07.ttf in Resources */,
+				6064C3E1C0F2494690299353 /* Arial-Rounded-Bold.ttf in Resources */,
+				6ACDE21B44E14B1C9D55F3BD /* Avenir-Black-03.ttf in Resources */,
+				A096AA5AF5844FE095FE3199 /* Avenir-BlackOblique-04.ttf in Resources */,
+				53BD64B208F94BEF8FB2A557 /* Avenir-Book-01.ttf in Resources */,
+				D1D8BC2081CE485E85D26E81 /* Avenir-BookOblique-02.ttf in Resources */,
+				7EA44556E17B47889505BE65 /* Avenir-Heavy-05.ttf in Resources */,
+				E70E55EE420A4441887D303F /* Avenir-HeavyOblique-06.ttf in Resources */,
+				39CD406B033D486AB804D3EF /* Avenir-Light-07.ttf in Resources */,
+				1F771DABEEAC48A0BB8D1A25 /* Avenir-LightOblique-08.ttf in Resources */,
+				FE5BAB56027745BFA9D3209E /* Avenir-Medium-09.ttf in Resources */,
+				AC027E9D718D4767ADBBC3C5 /* Avenir-MediumOblique-10.ttf in Resources */,
+				A15F6F11BBB2406DAE91998A /* Avenir-Oblique-11.ttf in Resources */,
+				31ECB6651604474DA0A93161 /* Avenir-Roman-12.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,7 +872,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ridleytech.lotto;
-				PRODUCT_NAME = Lottery;
+				PRODUCT_NAME = "Lottery Club";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -701,7 +895,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ridleytech.lotto;
-				PRODUCT_NAME = Lottery;
+				PRODUCT_NAME = "Lottery Club";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

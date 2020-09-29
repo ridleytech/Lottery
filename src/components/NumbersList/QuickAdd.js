@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Text,
   Image,
+  Platform,
 } from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import SearchIcon from '../../images/search-icon.png';
@@ -57,10 +58,25 @@ export default QuickAdd;
 
 const styles = StyleSheet.create({
   numberShadow: {
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 3},
-    shadowOpacity: 0.3,
-    shadowRadius: 2.5,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 3},
+        shadowOpacity: 0.3,
+        shadowRadius: 2.5,
+      },
+      android: {
+        // shadowColor: '#000',
+        // shadowOffset: {width: 0, height: 2.5},
+        // shadowOpacity: 0.3,
+        // shadowRadius: 2.5,
+        // backgroundColor: 'white',
+        // elevation: 1,
+      },
+      default: {
+        // other platforms, web for example
+      },
+    }),
   },
   searchIcon: {width: 20, height: 20, marginLeft: -15},
   quickAddDisabled: {
@@ -73,8 +89,21 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 5,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
+    ...Platform.select({
+      ios: {},
+      android: {
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2.5},
+        shadowOpacity: 0.3,
+        shadowRadius: 2.5,
+        elevation: 1,
+      },
+      default: {
+        // other platforms, web for example
+      },
+    }),
   },
   quickAdd: {
     width: 140,
@@ -86,7 +115,20 @@ const styles = StyleSheet.create({
     height: 26,
     paddingTop: 5,
     fontSize: 12,
-    fontFamily: 'Avenir-Heavy',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir-Heavy' : 'Avenir-Heavy-05',
     letterSpacing: 0.43,
+    ...Platform.select({
+      ios: {},
+      android: {
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2.5},
+        shadowOpacity: 0.3,
+        shadowRadius: 2.5,
+        elevation: 1,
+      },
+      default: {
+        // other platforms, web for example
+      },
+    }),
   },
 });

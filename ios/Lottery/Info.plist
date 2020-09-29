@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Lottery</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -59,6 +59,55 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Roboto_medium.ttf</string>
+		<string>Roboto.ttf</string>
+		<string>rubicon-icon-font.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>HelveticaNeue-01.ttf</string>
+		<string>HelveticaNeue-Bold-02.ttf</string>
+		<string>HelveticaNeue-BoldItalic-04.ttf</string>
+		<string>HelveticaNeue-CondensedBlack-10.ttf</string>
+		<string>HelveticaNeue-CondensedBold-05.ttf</string>
+		<string>HelveticaNeue-Italic-03.ttf</string>
+		<string>HelveticaNeue-Light-08.ttf</string>
+		<string>HelveticaNeue-LightItalic-09.ttf</string>
+		<string>HelveticaNeue-Medium-11.ttf</string>
+		<string>HelveticaNeue-MediumItalic-12.ttf</string>
+		<string>HelveticaNeue-Thin-13.ttf</string>
+		<string>HelveticaNeue-ThinItalic-14.ttf</string>
+		<string>HelveticaNeue-UltraLight-06.ttf</string>
+		<string>HelveticaNeue-UltraLightItalic-07.ttf</string>
+		<string>Arial-Rounded-Bold.ttf</string>
+		<string>Avenir-Black-03.ttf</string>
+		<string>Avenir-BlackOblique-04.ttf</string>
+		<string>Avenir-Book-01.ttf</string>
+		<string>Avenir-BookOblique-02.ttf</string>
+		<string>Avenir-Heavy-05.ttf</string>
+		<string>Avenir-HeavyOblique-06.ttf</string>
+		<string>Avenir-Light-07.ttf</string>
+		<string>Avenir-LightOblique-08.ttf</string>
+		<string>Avenir-Medium-09.ttf</string>
+		<string>Avenir-MediumOblique-10.ttf</string>
+		<string>Avenir-Oblique-11.ttf</string>
+		<string>Avenir-Roman-12.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
