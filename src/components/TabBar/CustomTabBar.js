@@ -4,6 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import TabHomeIcon from './TabHomeIcon';
 import TabMyGamesIcon from './TabMyGamesIcon';
 import {useSelector, useDispatch} from 'react-redux';
+import { NavigationActions, StackActions,CommonActions } from '@react-navigation/native';
 
 //https://medium.com/@Daniel.Merrill/build-a-custom-tab-bar-with-a-menu-button-in-react-navigation-in-20-minutes-f7d721551ef
 //https://reactnavigation.org/docs/bottom-tab-navigator/
@@ -48,7 +49,32 @@ function CustomTabBar({state, descriptors, navigation}) {
 
           dispatch({type: 'UPDATE_SCREEN', screen: index});
 
-          //this.props.updateScreen(1);
+          if(index == 1)
+          {
+            console.log("reset 1st tab")
+
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [
+                  { name: 'AvailableGames' }
+                ],
+              })
+            );
+          }
+          else if(index == 0)
+          {
+            console.log("reset 2nd tab")
+
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 1,
+                routes: [
+                  { name: 'MyGames' }
+                ],
+              })
+            );
+          }
         };
 
         const onLongPress = () => {

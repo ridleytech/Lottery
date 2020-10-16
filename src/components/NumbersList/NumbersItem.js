@@ -14,12 +14,14 @@ import {
 import {ListItem, Body} from 'native-base';
 
 function NumbersItem({item, selectItem}) {
+
+  //console.log("render item")
   //console.log('item: ' + JSON.stringify(item));
-  //console.log('numbers: ' + item.item.numbers);
+  //console.log('numbers: ' + item.numbers);
 
   //console.log('item');
 
-  var numbers = item.item.numbers.split(' ');
+  var numbers = item.numbers.split(' ');
 
   function randomStr(len, arr) {
     var ans = '';
@@ -29,7 +31,7 @@ function NumbersItem({item, selectItem}) {
     return ans;
   }
 
-  var akey3 = item.item.gamerowid + randomStr(3, '123khsl');
+  var akey3 = item.gamerowid + randomStr(3, '123khsl');
 
   return (
     <ListItem style={[styles.listitem2]} noBorder key={akey3}>
@@ -38,12 +40,12 @@ function NumbersItem({item, selectItem}) {
           <View style={styles.view3}>
             <TouchableOpacity onPress={() => selectItem(item)}>
               <Image
-                source={item.item.selected ? RemoveNumberIcon : AddNumberIcon}
+                source={item.selected ? RemoveNumberIcon : AddNumberIcon}
                 style={styles.selectIcon}
               />
             </TouchableOpacity>
 
-            <Text style={styles.orderCell}>{item.item.order}.</Text>
+            <Text style={styles.orderCell}>{item.order}.</Text>
 
             {numbers.map((numberItem, index) => {
               return (
@@ -83,7 +85,7 @@ function NumbersItem({item, selectItem}) {
           </View>
 
           <Text style={styles.playedCell}>
-            Played by {item.item.assignedTotal} users
+            Played by {item.assignedTotal} users
           </Text>
         </View>
       </Body>

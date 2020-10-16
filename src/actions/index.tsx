@@ -59,3 +59,17 @@ export const showPlayed = (value: number): any => {
     mostPlayed: value,
   };
 };
+
+export const clearGameNumbers = (): any => {
+
+  return {
+    type: 'CLEAR_GAME_NUMBERS',
+  };
+};
+
+export const clearMyGameNumbers = (): any => {
+
+  return {
+    type: 'CLEAR_MY_GAME_NUMBERS',
+  };
+};

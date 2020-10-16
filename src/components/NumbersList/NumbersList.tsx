@@ -19,6 +19,8 @@ import {
   removeNumbers,
   sortMyNumbers,
   setRefreshing,
+  clearGameNumbers,
+  clearMyGameNumbers
 } from '../../actions';
 import {
   getGameNumbers,
@@ -27,6 +29,9 @@ import {
   getUserNumbers,
   manageGame,
 } from '../../thunks';
+
+import { NavigationActions, StackActions } from '@react-navigation/native';
+
 
 import GameInfo from '../GameInfo';
 import NumbersRow from './NumbersRow';
@@ -39,12 +44,16 @@ import MoveBall from './MoveBall';
 
 // https://reactnative.dev/docs/flexbox
 
+
+
 class NumbersList extends Component<Props> {
   constructor(props: Props) {
     super(props);
 
     this.selectItem = this.selectItem.bind(this);
   }
+
+  list = null
 
   flatList = createRef<FlatList<any>>();
 
@@ -84,6 +93,26 @@ class NumbersList extends Component<Props> {
     //   this.props.url,
     //   this.props.gamesMyNumbersPage,
     // );
+  }
+
+  componentWillUnmount () {
+
+    console.log('numbers list componentWillUnmount');
+
+    // if(this.props.currentScreen == 0)
+    // {
+    //   this.props.clearGameNumbers()
+    // }
+    // else
+    // {
+    //   this.props.clearMyGameNumbers()
+    // }
+
+    this.props.clearGameNumbers()
+
+    // this.list = []
+
+    // console.log("list: "+this.list)
   }
 
   closeDetails() {
@@ -253,12 +282,12 @@ class NumbersList extends Component<Props> {
   changeVal = (val) => {
     console.log('changeVal: ' + val);
 
-    if (val) {
-      if (val.length <= this.props.selectedGame.maxVals) {
-        this.setState({
-          quickAddVal: val,
-        });
-      }
+    if (val) {}
+
+    if (val.length <= this.props.selectedGame.maxNums) {
+      this.setState({
+        quickAddVal: val,
+      });
     }
   };
 
@@ -270,7 +299,6 @@ class NumbersList extends Component<Props> {
     console.log('manageGame numbersList: ' + JSON.stringify(item));
 
     this.props.manageGame(item);
-
     this.props.navigation.pop();
   };
 
@@ -379,7 +407,7 @@ class NumbersList extends Component<Props> {
       });
     }
 
-    if (this.props.gameNumbers != prevProps.gameNumbers) {
+    if (this.props.gameNumbers != prevProps.gameNumbers && this.flatList.current) {
       this.flatList.current.scrollToOffset({animated: false, offset: 0});
     }
 
@@ -432,29 +460,65 @@ class NumbersList extends Component<Props> {
     }
   }
 
+  renderRow = ({ item }) => {
+    return (
+      <NumbersItem item={item} selectItem={this.selectItem} />
+    );
+
+   
+  }; 
+  keyExtractor = (item) => item.gamerowid.toString();
+
+  listEmptyComponent = () => {
+    return (
+        <View>
+        </View>
+      )
+  }
+
+  clearListData = () => {
+
+    console.log('clearListData');
+
+    // this.list = []
+
+    // console.log("list: "+this.list)
+
+    //this.props.navigation.goBack()
+
+//     this.props.navigation.reset({
+//       index: 0,
+//       routes: [{ name: 'AvailableGames' }]
+//  })
+  }
+
   render() {
     //console.log('nl: ' + JSON.stringify(this.props));
 
-    var list;
+    //var list;
 
     if (this.state.showTotal == true) {
       //console.log('game');
 
-      list = this.props.gameNumbers;
+      this.list = this.props.gameNumbers;
     } else if (this.state.showTotal == false && this.state.sort == 0) {
       //console.log('game');
 
-      list = this.props.myGameNumbers;
+      this.list = this.props.myGameNumbers;
     } else if (this.state.sort == 1) {
       //console.log('manual');
 
-      list = this.props.manualNumbers;
+      this.list = this.props.manualNumbers;
     } else {
       //console.log('auto');
-      list = this.props.autoNumbers;
+      this.list = this.props.autoNumbers;
     }
 
+    //this.data = []
+
     //console.log(this.state.sort);
+
+    //console.log("list: "+this.list)
 
     return (
       <>
@@ -472,6 +536,12 @@ class NumbersList extends Component<Props> {
               </Body>
             </ListItem>
           </View>
+
+          <TouchableOpacity 
+          onPress={()=>this.clearListData()} 
+          style={{marginTop: 20, marginBottom: 20}}>
+            <Text>Clear data</Text></TouchableOpacity>
+
 
           <QuickAdd
             quickAddVal={this.state.quickAddVal}
@@ -503,12 +573,11 @@ class NumbersList extends Component<Props> {
           <FlatList
             ref={this.flatList}
             style={styles.numbersList}
-            data={list}
-            renderItem={(item) => (
-              <NumbersItem item={item} selectItem={this.selectItem} />
-            )}
+            data={this.list}
+            renderItem={this.renderRow}
             //key={(item) => item.gamerowid}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={this.keyExtractor} 
+            ListEmptyComponent={this.listEmptyComponent}
           />
         </View>
       </>
@@ -547,6 +616,8 @@ export default connect(mapStateToProps, {
   sortMyNumbers,
   manageGame,
   setRefreshing,
+  clearGameNumbers,
+  clearMyGameNumbers
 })(NumbersList);
 
 const styles = StyleSheet.create({

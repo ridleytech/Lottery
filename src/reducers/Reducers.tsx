@@ -2,11 +2,11 @@ import {act} from 'react-test-renderer';
 //import {actions} from '../thunks/actions';
 //import {initialState} from '../data/initialState';
 
-var local: Boolean = true;
+var local: Boolean = false;
 var localPath = 'http://localhost:8888/ridleytech/lottery/';
 //var localPath = 'http://10.0.2.2:8888/ridleytech/lottery/';
 //var remotePath = 'http://agiledevelopment.xyz/lottery/';
-//remotePath = 'http://ridleytechnologies.com/lottery/';
+var remotePath = 'http://44.237.238.43/lottery/';
 
 var url;
 
@@ -317,7 +317,8 @@ export default (state = initialState, action: any) => {
       //var currentGameNumbers = state.gameNumbers.slice();
 
       var gameNumbers = action.payload.data.gameNumbers;
-      console.log('GAME_NUMBERS_FETCH: ' + JSON.stringify(action.payload.data));
+      console.log('GAME_NUMBERS_FETCH');
+      //console.log('GAME_NUMBERS_FETCH: ' + JSON.stringify(action.payload.data));
 
       // gameNumbers.map((ob) => {
       //   currentGameNumbers.push(ob);
@@ -369,6 +370,31 @@ export default (state = initialState, action: any) => {
         autoNumbers: autoNumbers,
         manualNumbers: manualNumbers,
       };
+
+      case 'CLEAR_GAME_NUMBERS':
+      console.log('CLEAR_GAME_NUMBERS');
+
+      return {
+        ...state,
+        gameNumbers: [],
+        gamesMyGameNumbers: [],
+        autoNumbers: [],
+        manualNumbers: [],
+        
+      };
+
+      case 'CLEAR_MY_GAME_NUMBERS':
+      console.log('CLEAR_MY_GAME_NUMBERS');
+
+      return {
+        ...state,
+        // myGameNumbers: [],
+        // myGamesGameNumbers: [],
+        // myGamesMyGameNumbers: [],
+        // myGamesAutoNumbers: [],
+        // myGamesManualNumbers: [],
+      };
+
 
     default:
       return state;

@@ -43,6 +43,8 @@ class AvailableGames extends Component<Props> {
   }
 
   componentDidMount() {
+
+    console.log("available games did mount")
     this.props.getAvailableGames(this.props.userid, 1, this.props.url);
     //this.props.getMyGames(this.props.userid, this.props.url);
 
@@ -77,7 +79,7 @@ class AvailableGames extends Component<Props> {
 
     if (prevProps.games !== this.props.games && this.props.games.length > 0) {
       //update UI for available numbers from refresh when users adds/removes number from numbers list screen
-      console.log('games changed available games');
+      //console.log('games changed available games');
 
       // this.props.games.map((game) => {
       //   if (game.gameid === this.props.selectedGame.gameid) {
