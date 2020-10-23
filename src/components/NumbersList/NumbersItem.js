@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowOffset: {width: 0, height: 6},
         shadowRadius: 2.5,
-        //elevation: 1,
+        elevation: 1,
         //backgroundColor: 'white',
       },
       android: {},

@@ -30,9 +30,6 @@ import {
   manageGame,
 } from '../../thunks';
 
-import { NavigationActions, StackActions } from '@react-navigation/native';
-
-
 import GameInfo from '../GameInfo';
 import NumbersRow from './NumbersRow';
 import MostLeastPlayed from './MostLeastPlayed';
@@ -43,8 +40,6 @@ import PagingView from './PagingView';
 import MoveBall from './MoveBall';
 
 // https://reactnative.dev/docs/flexbox
-
-
 
 class NumbersList extends Component<Props> {
   constructor(props: Props) {
@@ -182,7 +177,7 @@ class NumbersList extends Component<Props> {
 
     var status;
 
-    if (item.item.selected == true) {
+    if (item.selected == true) {
       console.log('remove numbers');
       //this.props.removeNumbers(item);
 
@@ -203,7 +198,7 @@ class NumbersList extends Component<Props> {
     }
 
     this.props.manageNumbers(
-      item.item.numbers,
+      item.numbers,
       1,
       this.props.selectedGame.gameid,
       1,
@@ -416,7 +411,7 @@ class NumbersList extends Component<Props> {
       this.validateQuickAdd();
     }
 
-    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers) {
+    if (prevProps.lastEditedNumbers !== this.props.lastEditedNumbers || prevProps.numberStatus !== this.props.numberStatus) {
       console.log(
         'lastEditedNumbers numbers list: ' +
           prevProps.lastEditedNumbers +
@@ -537,10 +532,10 @@ class NumbersList extends Component<Props> {
             </ListItem>
           </View>
 
-          <TouchableOpacity 
+          {/* <TouchableOpacity 
           onPress={()=>this.clearListData()} 
           style={{marginTop: 20, marginBottom: 20}}>
-            <Text>Clear data</Text></TouchableOpacity>
+            <Text>Clear data</Text></TouchableOpacity> */}
 
 
           <QuickAdd
@@ -599,6 +594,7 @@ const mapStateToProps = (state) => {
     manualNumbers: state.manualNumbers,
     //lastSubmittedNumber: state.lastSubmittedNumber,
     lastEditedNumbers: state.lastEditedNumbers,
+    numberStatus: state.numberStatus,
     gamesNumbersPage: state.gamesNumbersPage,
     gamesMyNumbersPage: state.gamesMyNumbersPage,
     myGamesNumbersPage: state.myGamesNumbersPage,

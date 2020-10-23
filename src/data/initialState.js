@@ -29,7 +29,7 @@ export const initialState = {
   toUpdate: false,
   url: url,
   user: null,
-  userid: 2,
+  userid: 502,
   gamesNumbersPage: 0,
   gamesMyNumbersPage: 0,
   myGamesNumbersPage: 0,

@@ -11,6 +11,7 @@ import {
   AccessToken,
   GraphRequest,
   GraphRequestManager,
+  LoginManager
 } from 'react-native-fbsdk';
 
 class SignIn extends Component<Props> {
@@ -84,7 +85,7 @@ class SignIn extends Component<Props> {
   };
 
   validateQuickAdd = () => {
-    //var patt = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
+
     var patt = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
     //console.log('patt: ' + patt);
     //console.log('val: ' + this.state.quickAddVal);
@@ -106,6 +107,32 @@ class SignIn extends Component<Props> {
       });
     }
   };
+
+  componentDidMount () {
+
+    AccessToken.getCurrentAccessToken().then(
+      (data) => {
+        
+        if(data)
+        {
+          console.log("logged in: "+data);
+
+          // this.setState({
+          //   loginEnabled: true,
+          // });
+
+          // let result = {id: "10105898932818398", first_name: "Randall", last_name: "Ridley"}
+
+          // this.setState({myInformation: result});
+          // console.log('result:', result);
+
+          // this.props.authUser(result, 7348901810);
+
+          LoginManager.logOut();
+        }      
+      } //Refresh it every time
+  );
+  }
 
   componentDidUpdate(prevProps, nextState) {
     if (this.state.quickAddVal != nextState.quickAddVal) {
@@ -130,7 +157,8 @@ class SignIn extends Component<Props> {
           <TextInput
             style={styles.inputTxt}
             value={this.state.quickAddVal}
-            onChangeText={(text) => this.changeVal(text)}></TextInput>
+            onChangeText={(text) => this.changeVal(text)}
+            ></TextInput>
         </View>
 
         <View
@@ -139,6 +167,23 @@ class SignIn extends Component<Props> {
             alignItems: 'center',
             display: 'flex',
           }}>
+
+{/* <LoginButton
+              onLoginFinished={(error, result) => {
+                if (error) {
+                  console.log('login has error: ' + error);
+                } else if (result.isCancelled) {
+                  console.log('login is cancelled.');
+                } else {
+                  AccessToken.getCurrentAccessToken().then((myData) => {
+                    const accessToken = myData.accessToken.toString();
+                    this.GetInformationFromToken(accessToken);
+                  });
+                }
+              }}
+              onLogoutFinished={() => this.setState({myInformation: {}})}
+            /> */}
+
           {this.state.loginEnabled ? (
             <LoginButton
               onLoginFinished={(error, result) => {
@@ -160,7 +205,7 @@ class SignIn extends Component<Props> {
               <TouchableOpacity
                 onPress={() => {
                   Alert.alert('Please enter phone number to login.');
-                }}>
+                }} disabled={!this.state.loginEnabled}>
                 <Image source={FBDisabled} style={{width: 190, height: 30}} />
               </TouchableOpacity>
             </>
@@ -181,7 +226,7 @@ class SignIn extends Component<Props> {
     elevation: 1,
     backgroundColor: '#0000', */}
 
-        <View
+        {/* <View
           style={{
             fontFamily:
               Platform.OS === 'ios'
@@ -208,7 +253,7 @@ class SignIn extends Component<Props> {
           <TouchableOpacity onPress={this.authUserDebug}>
             <Text style={styles.submitBtn2}>SKIP LOGIN (for testing)</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         {/* <View
           style={{

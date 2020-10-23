@@ -35,6 +35,7 @@ const initialState = {
   selectedNumbers: [],
   selectedNumber: null,
   lastEditedNumbers: null,
+  numberStatus: null,
   games: [],
   myGames: [],
 
@@ -50,7 +51,7 @@ const initialState = {
   toUpdate: false,
   url: url,
   user: null,
-  userid: 2,
+  userid: 502,
   gamesNumbersPage: 0,
   gamesMyNumbersPage: 0,
   myGamesNumbersPage: 0,
@@ -65,13 +66,14 @@ export default (state = initialState, action: any) => {
       console.log(
         'redux user: ' +
           JSON.stringify(action.user) +
-          'payload: ' +
+          ' payload: ' +
           JSON.stringify(action.payload),
       );
       return {
         ...state,
         user: action.user,
         payload: action.payload,
+        userid: action.payload.data.userid
       };
 
     case 'LOGOUT_USER':
@@ -95,7 +97,7 @@ export default (state = initialState, action: any) => {
       };
 
     case 'UPDATE_SCREEN':
-      console.log('update screen: ' + action.screen);
+      //console.log('update screen: ' + action.screen);
       return {
         ...state,
         currentScreen: action.screen,
@@ -232,6 +234,8 @@ export default (state = initialState, action: any) => {
     case 'GAMES_FETCH':
       //console.log('GAMES_FETCH');
 
+      //console.log('GAMES_FETCH: ' +  JSON.stringify(action.payload.data));
+
       return {
         ...state,
         games: action.payload.data.availableGames,
@@ -295,6 +299,7 @@ export default (state = initialState, action: any) => {
         ...state,
         games: currentAvailableGames,
         lastEditedNumbers: action.payload.data.numbersResult.gamerowid,
+        numberStatus: action.payload.data.numbersResult.status
       };
 
     case 'SORT_MY_NUMBERS':

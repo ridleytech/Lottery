@@ -44,8 +44,13 @@ class AvailableGames extends Component<Props> {
 
   componentDidMount() {
 
-    console.log("available games did mount")
-    this.props.getAvailableGames(this.props.userid, 1, this.props.url);
+    //console.log("available games did mount")
+
+    if(this.props.games.length == 0)
+    {
+      this.props.getAvailableGames(this.props.userid, 1, this.props.url);
+    }
+
     //this.props.getMyGames(this.props.userid, this.props.url);
 
     // var ar = [1, 2, 3];

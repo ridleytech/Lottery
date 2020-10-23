@@ -53,7 +53,7 @@ function GameInfo({item, manageGame, url}) {
 
     return () => {
       // componentWillUnmount events
-      console.log('willunmount GameInfo');
+      //console.log('willunmount GameInfo');
       setIsActive(false);
     };
   }, []);
@@ -155,7 +155,9 @@ function GameInfo({item, manageGame, url}) {
 export default GameInfo;
 
 const styles = StyleSheet.create({
-  joinStatusImg: {width: 32, height: 32, left: 5, top: 5, position: 'absolute'},
+  joinStatusImg: {width: 32, height: 32, left: 5, top: 5, position: 'absolute',    
+  zIndex: 2
+},
   list: {marginBottom: 300},
   searchIcon: {width: 20, height: 20, marginLeft: -15},
   playedActive: {

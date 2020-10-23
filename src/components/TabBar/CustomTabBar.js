@@ -51,7 +51,7 @@ function CustomTabBar({state, descriptors, navigation}) {
 
           if(index == 1)
           {
-            console.log("reset 1st tab")
+            //console.log("reset 1st tab")
 
             navigation.dispatch(
               CommonActions.reset({
@@ -64,7 +64,7 @@ function CustomTabBar({state, descriptors, navigation}) {
           }
           else if(index == 0)
           {
-            console.log("reset 2nd tab")
+            //console.log("reset 2nd tab")
 
             navigation.dispatch(
               CommonActions.reset({

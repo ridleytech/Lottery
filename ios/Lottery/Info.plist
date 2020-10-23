@@ -32,7 +32,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
-	<string>fb344636366959770</string>
+	<string>344636366959770</string>
 	<key>FacebookDisplayName</key>
 	<string>The Lottery Club</string>
 	<key>LSApplicationQueriesSchemes</key>
